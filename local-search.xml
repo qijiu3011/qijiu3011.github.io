@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  
+  
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="/2026/03/06/hello-world/"/>
+    <url>/2026/03/06/hello-world/</url>
+    
+    <content type="html"><![CDATA[<h2 id="我的第一个博客文章"><a href="#我的第一个博客文章" class="headerlink" title="我的第一个博客文章"></a>我的第一个博客文章</h2><p>欢迎来到MianYy的博客！</p><h3 id="代码测试"><a href="#代码测试" class="headerlink" title="代码测试"></a>代码测试</h3><pre><code class="cpp">#include &lt;iostream&gt;using namespace std;int main()&#123;    cout &lt;&lt; &quot;Hello World!&quot; &lt;&lt; endl;    return 0;&#125;</code></pre>]]></content>
+    
+    
+    <categories>
+      
+      <category>算法</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>编程</tag>
+      
+      <tag>入门</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  
+</search>
