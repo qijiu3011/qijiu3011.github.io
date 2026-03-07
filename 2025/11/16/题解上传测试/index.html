@@ -72,6 +72,7 @@
 
   
 <link rel="stylesheet" href="/css/beauty.css">
+<link rel="stylesheet" href="/css/blog-like.css">
 
 
 
@@ -91,7 +92,8 @@
 
 
   
-<meta name="generator" content="Hexo 7.3.0"></head>
+<!-- hexo injector head_end start --><link rel="stylesheet" href="/Blog-Like/style.css">
+<script src="/Blog-Like/Blog-Like.js"></script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head>
 
 
 <body>
@@ -466,6 +468,13 @@ int main()
                 </div>
               
             </div>
+            
+            <!-- 点赞按钮（Blog-Like插件） -->
+            <div id="zan" class="clearfix">
+                <div class="heart" onclick="goodplus(url, flag)"></div>
+                <br>
+                <div id="zan_text"></div>
+            </div>
 
             
           </article>
@@ -763,6 +772,7 @@ int main()
 
   
 <script src="/js/sort.js"></script>
+<script src="/js/blog-like.js"></script>
 
 
 
