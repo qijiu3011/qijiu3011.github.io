@@ -43,34 +43,57 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* ===== 文章容器 ===== */
-.post-card {
-  background: var(--bg-main);
-  border-radius: 20px;
-  box-shadow: 0 10px 30px -10px rgba(66, 153, 225, 0.15);
-  padding: 2rem;
-  margin-bottom: 2rem;
-  transition: all 0.3s ease;
-  border: 1px solid var(--border-light);
+/* ===== 瀑布流布局 ===== */
+.post-list {
+  column-count: 3;
+  column-gap: 1.5rem;
+  column-fill: balance;
+  margin: 0 auto;
+  max-width: 1200px;
 }
 
+/* ===== 文章卡片样式 ===== */
+.post-card {
+  break-inside: avoid;
+  background: var(--bg-main);
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(66, 153, 225, 0.1);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  border: 1px solid var(--blue-mist);
+  transition: all 0.3s ease;
+  animation: fadeInUp 0.6s ease-out;
+  width: 100%;
+  display: inline-block;
+}
+
+/* 卡片悬停效果 */
 .post-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 20px 40px -15px rgba(66, 153, 225, 0.25);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(66, 153, 225, 0.2);
   border-color: var(--blue-cloud);
 }
 
-/* ===== 文章标题 ===== */
-.post-title {
-  font-size: 2.2rem;
-  font-weight: 700;
-  line-height: 1.3;
-  margin-bottom: 1rem;
-  color: var(--text-primary);
-  letter-spacing: -0.02em;
+/* 隐藏文章摘要内容 */
+.post-card .post-content,
+.post-card .post-excerpt,
+.post-card .post-body,
+.post-card .post-preview {
+  display: none !important;
 }
 
-.post-title a {
+/* 文章标题样式 */
+.post-card .post-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0.5rem 0 1rem 0;
+  line-height: 1.4;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+  word-wrap: break-word;
+}
+
+.post-card .post-title a {
   color: inherit;
   text-decoration: none;
   background: linear-gradient(135deg, var(--accent-blue), var(--link-hover));
@@ -80,44 +103,83 @@ body {
   transition: background-size 0.3s ease;
 }
 
-.post-title a:hover {
+.post-card .post-title a:hover {
   background-size: 100% 2px;
   color: var(--link-hover);
 }
 
-/* ===== 文章元数据 ===== */
-.post-meta {
-  font-size: 0.95rem;
+/* 文章元数据 - 包含阅读数和标签 */
+.post-card .post-meta {
+  font-size: 0.9rem;
   color: var(--text-light);
-  margin-bottom: 1.5rem;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid var(--border-light);
+  margin-bottom: 0.5rem;
+  padding-bottom: 0;
+  border-bottom: none;
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
   align-items: center;
 }
 
-.post-meta i {
+.post-card .post-meta i {
   color: var(--blue-cloud);
   margin-right: 0.3rem;
 }
 
-.post-meta a {
+/* 阅读数样式 */
+.post-card .post-meta .post-views,
+.post-card .post-meta .views-count {
+  color: var(--blue-cloud);
+  font-weight: 500;
+}
+
+/* 标签容器 */
+.post-card .post-meta .post-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-left: auto;
+}
+
+/* 单个标签样式 */
+.post-card .post-meta .post-tags a {
+  background: var(--blue-soft);
   color: var(--text-secondary);
+  padding: 0.2rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
   text-decoration: none;
-  transition: color 0.2s ease;
+  border: 1px solid var(--blue-mist);
+  transition: all 0.2s ease;
+  white-space: nowrap;
 }
 
-.post-meta a:hover {
-  color: var(--accent-blue);
+.post-card .post-meta .post-tags a:hover {
+  background: var(--blue-cloud);
+  color: white;
+  transform: translateY(-1px);
 }
 
-/* ===== 文章内容排版 ===== */
+/* 响应式调整 - 瀑布流列数 */
+@media screen and (max-width: 992px) {
+  .post-list {
+    column-count: 2;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .post-list {
+    column-count: 1;
+  }
+}
+
+/* ===== 文章内容排版（详情页使用）===== */
 .post-content {
   font-size: 1.1rem;
   line-height: 1.9;
   color: var(--text-primary);
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 /* 段落 */
@@ -445,16 +507,16 @@ footer {
 
 /* ===== 响应式调整 ===== */
 @media (max-width: 768px) {
-  .post-title {
-    font-size: 1.8rem;
-  }
-  
   .post-content {
     font-size: 1rem;
   }
   
   .post-card {
-    padding: 1.5rem;
+    padding: 1.2rem;
+  }
+  
+  .post-card .post-title {
+    font-size: 1.3rem;
   }
   
   .post-content > p:first-of-type::first-letter {
@@ -463,12 +525,12 @@ footer {
 }
 
 @media (max-width: 480px) {
-  .post-title {
-    font-size: 1.5rem;
+  .post-card .post-title {
+    font-size: 1.2rem;
   }
   
-  .post-meta {
-    font-size: 0.85rem;
+  .post-card .post-meta {
+    font-size: 0.8rem;
     gap: 0.5rem;
   }
   
@@ -517,7 +579,7 @@ footer {
   color: white;
 }
 
-/* ===== 文章卡片动画 ===== */
+/* ===== 动画定义 ===== */
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -527,10 +589,6 @@ footer {
     opacity: 1;
     transform: translateY(0);
   }
-}
-
-.post-card {
-  animation: fadeInUp 0.6s ease-out;
 }
 
 /* ===== 脚注样式 ===== */
