@@ -215,7 +215,26 @@
           <div class="container">
             <div class="row">
               <div class="col-12 col-md-10 m-auto">
-                
+                <!-- 临时声明：用于 js.org 审核 -->
+<div style="
+    background: linear-gradient(135deg, #e6f3ff 0%, #d4e9ff 100%);
+    color: #2c3e50;
+    text-align: center;
+    padding: 12px 20px;
+    margin-bottom: 25px;
+    border-radius: 40px;
+    border: 1px solid #9ac0ff;
+    box-shadow: 0 2px 10px rgba(66,153,225,0.2);
+    font-size: 0.95rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+">
+    🌟 本站基于 <strong>Node.js/Hexo</strong> 构建，前端交互深度定制（点赞、排序、瀑布流） · 
+    与 JavaScript 生态紧密相关
+</div>
+
+
 
 
   <div class="row mx-auto index-card">
@@ -236,19 +255,22 @@
         </div>
       </a>
 
+      <!-- 卡片底部元数据开始 -->
       <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2026-03-06 00:00" pubdate>
-              2026-03-06
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
+        <!-- 第一行：日期 + 分类 -->
+        <div class="meta-row">
+          
+            <div class="post-meta mr-3">
+              <i class="iconfont icon-date"></i>
+              <time datetime="2026-03-06 00:00" pubdate>
+                2026-03-06
+              </time>
+            </div>
+          
+          
+            <div class="post-meta mr-3 d-flex align-items-center">
+              <i class="iconfont icon-category"></i>
+              
 
 <span class="category-chains">
   
@@ -265,24 +287,41 @@
   
 </span>
 
-          </div>
-        
-        <!-- 新增阅读数 -->
-        <div class="post-meta">
-          <i class="iconfont icon-eye"></i>
-          <span id="busuanzi_value_page_pv">0</span>
+            </div>
+          
         </div>
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
+
+        <!-- 第二行：阅读数 + 标签（左） + 点赞（右） -->
+        <div class="meta-row bottom-row">
+          <div class="left-group">
+            <!-- 阅读数 -->
+            <div class="post-meta">
+              <i class="iconfont icon-eye"></i>
+              <span id="busuanzi_value_page_pv">0</span> 阅读
+            </div>
+            <!-- 标签 -->
             
-              <a href="/tags/%E7%BC%96%E7%A8%8B/">#编程</a>
+              <div class="post-meta tags-group">
+                <i class="iconfont icon-tags"></i>
+                
+                  <a href="/tags/%E7%BC%96%E7%A8%8B/">#编程</a>
+                
+                  <a href="/tags/%E5%85%A5%E9%97%A8/">#入门</a>
+                
+              </div>  <!-- 这里闭合 tags-group -->
             
-              <a href="/tags/%E5%85%A5%E9%97%A8/">#入门</a>
-            
-          </div>
-        
-      </div>
+          </div>  <!-- 闭合 left-group -->
+          <!-- 点赞按钮（右对齐） -->
+          <div class="right-group">
+            <div class="post-meta like-meta" data-url="https://qijiu3011.github.io/2026/03/06/hello-world/">
+              <i class="iconfont icon-heart"></i>
+              <span class="like-count" id="zan_hello-world">0</span>
+            </div>
+          </div>  <!-- 闭合 right-group -->
+        </div>  <!-- 闭合 bottom-row -->
+      </div>  <!-- 闭合 index-btm -->
+      <!-- 卡片底部元数据结束 -->
+
     </article>
   </div>
 
@@ -304,19 +343,22 @@
         </div>
       </a>
 
+      <!-- 卡片底部元数据开始 -->
       <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2025-11-16 00:00" pubdate>
-              2025-11-16
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
+        <!-- 第一行：日期 + 分类 -->
+        <div class="meta-row">
+          
+            <div class="post-meta mr-3">
+              <i class="iconfont icon-date"></i>
+              <time datetime="2025-11-16 00:00" pubdate>
+                2025-11-16
+              </time>
+            </div>
+          
+          
+            <div class="post-meta mr-3 d-flex align-items-center">
+              <i class="iconfont icon-category"></i>
+              
 
 <span class="category-chains">
   
@@ -333,29 +375,45 @@
   
 </span>
 
-          </div>
-        
-        <!-- 新增阅读数 -->
-        <div class="post-meta">
-          <i class="iconfont icon-eye"></i>
-          <span id="busuanzi_value_page_pv">0</span>
+            </div>
+          
         </div>
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
+
+        <!-- 第二行：阅读数 + 标签（左） + 点赞（右） -->
+        <div class="meta-row bottom-row">
+          <div class="left-group">
+            <!-- 阅读数 -->
+            <div class="post-meta">
+              <i class="iconfont icon-eye"></i>
+              <span id="busuanzi_value_page_pv">0</span> 阅读
+            </div>
+            <!-- 标签 -->
             
-              <a href="/tags/AtCoder/">#AtCoder</a>
+              <div class="post-meta tags-group">
+                <i class="iconfont icon-tags"></i>
+                
+                  <a href="/tags/AtCoder/">#AtCoder</a>
+                
+                  <a href="/tags/%E6%95%B0%E8%AE%BA/">#数论</a>
+                
+                  <a href="/tags/%E5%90%8C%E4%BD%99/">#同余</a>
+                
+              </div>  <!-- 这里闭合 tags-group -->
             
-              <a href="/tags/%E6%95%B0%E8%AE%BA/">#数论</a>
-            
-              <a href="/tags/%E5%90%8C%E4%BD%99/">#同余</a>
-            
-          </div>
-        
-      </div>
+          </div>  <!-- 闭合 left-group -->
+          <!-- 点赞按钮（右对齐） -->
+          <div class="right-group">
+            <div class="post-meta like-meta" data-url="https://qijiu3011.github.io/2025/11/16/%E9%A2%98%E8%A7%A3%E4%B8%8A%E4%BC%A0%E6%B5%8B%E8%AF%95/">
+              <i class="iconfont icon-heart"></i>
+              <span class="like-count" id="zan_题解上传测试">0</span>
+            </div>
+          </div>  <!-- 闭合 right-group -->
+        </div>  <!-- 闭合 bottom-row -->
+      </div>  <!-- 闭合 index-btm -->
+      <!-- 卡片底部元数据结束 -->
+
     </article>
   </div>
-
 
 
 
