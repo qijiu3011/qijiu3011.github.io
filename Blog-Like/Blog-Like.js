@@ -7,7 +7,7 @@
   "AppID": "",
   "AppKEY": "",
   "xianzhi": true,
-  "number": 5,
+  "number": 1,
   "GoogleAnalytics": true,
   "GAEventCategory": "Engagement",
   "GAEventAction": "Like"
@@ -88,7 +88,7 @@
   "AppID": "",
   "AppKEY": "",
   "xianzhi": true,
-  "number": 5,
+  "number": 1,
   "GoogleAnalytics": true,
   "GAEventCategory": "Engagement",
   "GAEventAction": "Like"
