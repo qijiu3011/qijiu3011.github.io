@@ -1,0 +1,82 @@
+# 语言设置
+language: zh-CN
+
+# 主题信息覆盖
+description: "MianYy的博客 - 记录算法学习的点点滴滴"
+
+custom_css:
+  - /css/beauty.css
+  - /css/blog-like.css
+
+# 代码高亮设置
+code:
+  copy_btn: true
+  highlight:
+    enable: true
+    theme: atom-one-dark
+
+# 数学公式设置
+math:
+  enable: true
+  specific: true
+  engine: katex
+
+# 文章元数据配置
+post_meta:
+  views:
+    enable: true            # 开启浏览量显示
+    source: "busuanzi"      # 使用不蒜子统计
+  updated:
+    enable: false
+  wordcount:
+    enable: false
+
+# 统计功能
+statistics:
+  enable: true               # 总开关
+  busuanzi:
+    enable: true             # 不蒜子统计开关
+
+scripts:
+  busuanzi: https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js
+
+# 导航菜单设置
+navbar:
+  menu:
+    - { key: '主页', link: '/', icon: 'icon-home' }
+    - { key: '归档', link: '/archives/', icon: 'icon-archive' }
+    - { key: '分类', link: '/categories/', icon: 'icon-category' }
+    - { key: '标签', link: '/tags/', icon: 'icon-tag' }
+
+# 文章页面设置
+post:
+  math:
+    enable: true
+  code:
+    copy_btn: true
+  toc:
+    enable: true
+
+# 首页设置
+index:
+  banner:
+    enable: true
+    title: "MianYy的博客"
+    subtitle: "记录算法学习的点点滴滴"
+    style: card
+  post_list:
+    enable: true
+    page_size: 10
+  post_sticky:
+    enable: true                    # 启用置顶功能
+    icon: "iconfont icon-top"
+
+favicon: /favicon.ico
+
+inject:
+  head:
+    - '<script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>'
+
+custom_js:
+  - /js/sort.js
+  - /js/stats.js

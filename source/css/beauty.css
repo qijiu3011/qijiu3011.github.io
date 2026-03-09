@@ -1,0 +1,283 @@
+/* ===== 淡蓝色系主题 ===== */
+:root {
+  --blue-lightest: #f0f8ff;
+  --blue-soft: #e6f3ff;
+  --blue-mist: #d4e9ff;
+  --blue-sky: #b8d9ff;
+  --blue-cloud: #9ac0ff;
+  --blue-lavender: #c2d6ff;
+  --blue-ice: #d6eaff;
+  --blue-powder: #b0e0e6;
+
+  --text-primary: #2c3e50;
+  --text-secondary: #4a5568;
+  --text-soft: #5f6b7a;
+  --text-light: #718096;
+
+  --bg-main: #ffffff;
+  --bg-soft: #f9fcff;
+  --bg-blue-soft: #f5faff;
+
+  --border-light: #e2e8f0;
+  --border-soft: #cbd5e0;
+
+  --accent-blue: #4299e1;
+  --accent-light: #63b3ed;
+  --link-color: #3182ce;
+  --link-hover: #2c5282;
+}
+
+/* ===== 基础排版 ===== */
+body {
+  font-family: 'Segoe UI', 'Roboto', 'Microsoft YaHei', 'PingFang SC', 'Hiragino Sans GB', sans-serif;
+  font-size: 16px;
+  line-height: 1.8;
+  color: var(--text-primary);
+  background: linear-gradient(135deg, var(--bg-main) 0%, var(--bg-blue-soft) 100%);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ===== 卡片网格布局 ===== */
+#board .container > .row {
+  margin: 0 !important;
+  width: 100% !important;
+}
+
+#board .container > .row > .col-12.col-md-10.m-auto {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)) !important;
+  gap: 1.5rem !important;
+  padding: 0 1rem !important;
+  max-width: 1200px !important;
+  margin: 2rem auto !important;
+}
+
+#board .container > .row > .col-12.col-md-10.m-auto > .row.mx-auto.index-card {
+  width: 100% !important;
+  margin: 0 !important;
+  display: block !important;
+  background: transparent !important;
+  border: none !important;
+}
+
+/* ===== 卡片样式 ===== */
+article.index-info {
+  background: var(--bg-main);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(66, 153, 225, 0.08);
+  padding: 1.2rem;
+  border: 1px solid var(--blue-mist);
+  transition: all 0.3s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+article.index-info:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(66, 153, 225, 0.15);
+  border-color: var(--blue-cloud);
+}
+
+/* ===== 标题样式 ===== */
+.index-header {
+  font-size: 1.2rem !important;
+  font-weight: 600 !important;
+  margin: 0 0 1rem 0 !important;
+  line-height: 1.4 !important;
+  color: var(--text-primary) !important;
+  word-wrap: break-word;
+}
+
+.index-header a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.index-header a:hover {
+  color: var(--link-hover);
+}
+
+/* ===== 隐藏摘要 ===== */
+.index-excerpt {
+  display: none !important;
+}
+
+/* ===== 卡片底部布局 - 两行结构 ===== */
+.index-btm.post-metas {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0.6rem !important;
+  border-top: 1px solid var(--border-light);
+  padding-top: 0.8rem !important;
+  margin-top: auto !important;
+  width: 100%;
+}
+
+/* 第一行：日期 + 分类 */
+.meta-row:first-child {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+  color: var(--text-light);
+  font-size: 0.85rem;
+}
+
+/* 第二行：左右布局 */
+.meta-row.bottom-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+/* 左侧组：阅读数 */
+.left-group {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 1rem;
+  flex: 1 1 auto;
+}
+
+/* 右侧组：点赞 */
+.right-group {
+  flex-shrink: 0;
+  margin-left: 1rem;
+}
+
+/* ===== 元数据基础样式 ===== */
+.index-btm .post-meta {
+  display: inline-flex !important;
+  align-items: center !important;
+  white-space: nowrap !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  color: var(--text-light);
+  font-size: 0.85rem;
+}
+
+.index-btm .post-meta i {
+  margin-right: 0.2rem !important;
+  font-size: 0.9rem !important;
+  color: var(--blue-cloud) !important;
+}
+
+/* ===== 阅读数 ===== */
+#busuanzi_value_page_pv {
+  color: var(--blue-cloud) !important;
+  font-weight: 500 !important;
+  margin-left: 0.1rem;
+}
+
+/* ===== 点赞按钮 ===== */
+.like-meta {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.2rem !important;
+  cursor: pointer !important;
+  transition: transform 0.2s ease;
+}
+
+.like-meta i {
+  font-size: 1rem !important;
+  color: var(--blue-cloud) !important;
+  transition: color 0.2s ease;
+}
+
+.like-meta .like-count {
+  font-weight: 500 !important;
+  font-size: 0.85rem !important;
+  color: var(--blue-cloud) !important;
+}
+
+.like-meta:hover {
+  transform: scale(1.05);
+}
+
+.like-meta:hover i {
+  color: var(--accent-blue) !important;
+}
+
+/* ===== 排序按钮 ===== */
+.sort-container {
+  margin: 0 0 2rem 0;
+  padding: 0 1rem;
+  width: 100%;
+}
+
+.sort-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+  align-items: center;
+  background: var(--bg-main);
+  padding: 0.8rem 1.2rem;
+  border-radius: 40px;
+  box-shadow: 0 2px 8px rgba(66, 153, 225, 0.08);
+  border: 1px solid var(--blue-mist);
+  max-width: fit-content;
+  margin: 0 auto;
+}
+
+.sort-btn {
+  padding: 0.4rem 1rem;
+  border-radius: 30px;
+  border: 1px solid var(--blue-mist);
+  background: var(--bg-main);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 0.9rem;
+  font-weight: 500;
+  min-width: 70px;
+}
+
+.sort-btn:hover {
+  background: var(--blue-soft);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(66, 153, 225, 0.15);
+}
+
+.sort-btn.active {
+  background: var(--blue-cloud);
+  color: white;
+  border-color: var(--blue-cloud);
+}
+
+/* ===== 响应式 ===== */
+@media screen and (max-width: 768px) {
+  #board .container > .row > .col-12.col-md-10.m-auto {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)) !important;
+    gap: 1rem !important;
+  }
+  article.index-info {
+    padding: 1rem;
+  }
+  .index-header {
+    font-size: 1.1rem !important;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  #board .container > .row > .col-12.col-md-10.m-auto {
+    grid-template-columns: 1fr !important;
+    padding: 0 1.5rem !important;
+  }
+  .index-header {
+    font-size: 1.2rem !important;
+  }
+  
+  .meta-row.bottom-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .right-group {
+    margin-left: 0;
+    margin-top: 0.5rem;
+  }
+}
