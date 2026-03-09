@@ -15,7 +15,7 @@
   "node": "20.x"
   },
   "dependencies": {
-    "hexo": "^7.3.0",
+    "hexo": "^8.1.1",
     "hexo-blog-like": "^3.0.0",
     "hexo-cli": "^4.3.2",
     "hexo-deployer-git": "^4.0.0",
