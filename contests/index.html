@@ -19,15 +19,15 @@
   <meta name="author" content="qijiu3011">
   <meta name="keywords" content="ACM,算法,编程">
   
-    <meta name="description" content="📅 未来14天 Rated 比赛   加载中...       #contest-tracker {   font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, sans-serif;   max-width: 800px;   margin: 0 auto;   padding: 20px; } .conte">
+    <meta name="description" content="📅 未来14天 Rated 比赛   加载中...       #contest-tracker {   font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, sans-serif;   max-width: 1200px;   margin: 0 auto;   padding: 20px; }  &#x2F;* 日">
 <meta property="og:type" content="website">
 <meta property="og:title" content="近期 Rated 比赛">
 <meta property="og:url" content="https://qijiu3011.github.io/contests/index.html">
 <meta property="og:site_name" content="MianYy的博客">
-<meta property="og:description" content="📅 未来14天 Rated 比赛   加载中...       #contest-tracker {   font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, sans-serif;   max-width: 800px;   margin: 0 auto;   padding: 20px; } .conte">
+<meta property="og:description" content="📅 未来14天 Rated 比赛   加载中...       #contest-tracker {   font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, sans-serif;   max-width: 1200px;   margin: 0 auto;   padding: 20px; }  &#x2F;* 日">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-03-09T16:00:00.000Z">
-<meta property="article:modified_time" content="2026-03-10T14:08:27.521Z">
+<meta property="article:modified_time" content="2026-03-10T15:38:33.487Z">
 <meta property="article:author" content="qijiu3011">
 <meta property="article:tag" content="ACM,算法,编程">
 <meta name="twitter:card" content="summary_large_image">
@@ -237,29 +237,59 @@
 <style>
 #contest-tracker {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  max-width: 800px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
 }
+
+/* 日期分组样式 */
+.contest-day-group {
+  margin-bottom: 2rem;
+}
+
+.day-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--text-primary, #2c3e50);
+  margin-bottom: 1rem;
+  padding-bottom: 0.3rem;
+  border-bottom: 2px solid var(--blue-mist, #d4e9ff);
+}
+
+/* 卡片行：横向排列 */
+.contest-cards-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: flex-start;
+}
+
+/* 卡片样式（与之前类似，但宽度固定为 300px） */
 .contest-item {
   background: var(--bg-main, #fff);
   border: 1px solid var(--blue-mist, #d4e9ff);
   border-radius: 12px;
-  padding: 15px 20px;
-  margin-bottom: 12px;
+  padding: 1rem;
   box-shadow: 0 2px 8px rgba(66,153,225,0.08);
-  transition: transform 0.2s;
+  transition: all 0.2s;
+  width: 300px;               /* 固定宽度，实现横向排列 */
+  flex-shrink: 0;
+  box-sizing: border-box;
 }
 .contest-item:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(66,153,225,0.15);
+  border-color: var(--blue-cloud, #9ac0ff);
 }
+
 .contest-header {
   display: flex;
   align-items: center;
   gap: 10px;
   margin-bottom: 8px;
+  flex-wrap: wrap;
 }
+
 .contest-platform {
   display: inline-block;
   padding: 2px 10px;
@@ -269,22 +299,18 @@
   background: var(--blue-soft, #e6f3ff);
   color: var(--text-secondary, #4a5568);
 }
+
 .contest-name {
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 600;
   color: var(--text-primary, #2c3e50);
   text-decoration: none;
+  flex: 1;
 }
 .contest-name:hover {
   color: var(--link-hover, #2c5282);
 }
-.contest-time {
-  display: flex;
-  gap: 20px;
-  color: var(--text-light, #718096);
-  font-size: 0.9rem;
-  margin-top: 8px;
-}
+
 .rated-badge {
   background: var(--blue-cloud, #9ac0ff);
   color: white;
@@ -292,8 +318,16 @@
   border-radius: 12px;
   font-size: 0.7rem;
   font-weight: 500;
-  margin-left: 10px;
 }
+
+.contest-time {
+  display: flex;
+  gap: 15px;
+  color: var(--text-light, #718096);
+  font-size: 0.85rem;
+  margin-top: 8px;
+}
+
 .error-message {
   color: #e53e3e;
   padding: 20px;
@@ -301,174 +335,150 @@
   border: 1px dashed #feb2b2;
   border-radius: 8px;
 }
+
+/* 响应式：小屏幕时卡片宽度自适应 */
+@media (max-width: 768px) {
+  .contest-item {
+    width: 100%;
+  }
+}
 </style>
 
 <script>
-// CF API 代理（解决跨域）
-const CF_API = 'https://codeforces.com/api/contest.list';
+const USERNAME = 'qijiu3011';
+const API_KEY = '1b75ebe3156451b77b10580ea9ad1f53b5bf6c42';
 
-// 时间格式化
-function formatDate(timestamp) {
-  const date = new Date(timestamp * 1000);
+function formatDate(isoString) {
+  const date = new Date(isoString);
   const now = new Date();
   const diffDays = Math.floor((date - now) / (1000 * 60 * 60 * 24));
-  const diffHours = Math.floor((date - now) / (1000 * 60 * 60));
-  
   if (diffDays < 0) return '已开始';
   if (diffDays === 0) {
-    if (diffHours < 24) return `今天 ${date.getHours().toString().padStart(2,'0')}:${date.getMinutes().toString().padStart(2,'0')}`;
-    return `明天 ${date.getHours().toString().padStart(2,'0')}:${date.getMinutes().toString().padStart(2,'0')}`;
+    const hours = date.getHours().toString().padStart(2,'0');
+    const mins = date.getMinutes().toString().padStart(2,'0');
+    return `今天 ${hours}:${mins}`;
   }
-  if (diffDays === 1) return `明天 ${date.getHours().toString().padStart(2,'0')}:${date.getMinutes().toString().padStart(2,'0')}`;
+  if (diffDays === 1) {
+    const hours = date.getHours().toString().padStart(2,'0');
+    const mins = date.getMinutes().toString().padStart(2,'0');
+    return `明天 ${hours}:${mins}`;
+  }
   return `${diffDays}天后`;
 }
 
-// 获取CF比赛
-async function fetchCFContests() {
-  try {
-    const response = await fetch(CF_API);
-    const data = await response.json();
-    if (data.status !== 'OK') return [];
-    
-    const now = Math.floor(Date.now() / 1000);
-    const twoWeeks = 14 * 24 * 60 * 60;
-    
-    return data.result
-      .filter(c => c.phase === 'BEFORE' && (c.startTimeSeconds - now) <= twoWeeks)
-      .map(c => ({
-        platform: 'Codeforces',
-        name: c.name,
-        url: `https://codeforces.com/contest/${c.id}`,
-        startTime: c.startTimeSeconds,
-        duration: c.durationSeconds,
-        rated: c.name.includes('Rated') || c.name.includes('Div. 1') || c.name.includes('Div. 2'),
-        phase: c.phase
-      }));
-  } catch (error) {
-    console.error('CF fetch error:', error);
-    return [];
+// 获取日期的显示字符串（例如：3月14日 星期六）
+function getDayDisplay(isoString) {
+  const date = new Date(isoString);
+  const month = date.getMonth() + 1;
+  const day = date.getDate();
+  const weekdays = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
+  const weekday = weekdays[date.getDay()];
+  return `${month}月${day}日 ${weekday}`;
+}
+
+function isRatedContest(contest) {
+  const title = contest.event;
+  const resource = contest.resource || '';
+  
+  if (resource.includes('codeforces.com')) {
+    return !title.includes('Unrated');
+  } else if (resource.includes('atcoder.jp')) {
+    return title.includes('Beginner Contest') || 
+           title.includes('Regular Contest') || 
+           title.includes('Grand Contest');
+  } else if (resource.includes('ac.nowcoder.com')) {
+    return title.includes('小白月赛') || title.includes('练习赛') || title.includes('挑战赛');
   }
+  return false;
 }
 
-// 引入新安装的包
-import { fetchUpcomingContests } from '@qatadaazzeh/atcoder-api';
-
-async function fetchAtCoderContests() {
-  try {
-    // 直接调用包提供的函数获取未来比赛
-    const upcoming = await fetchUpcomingContests();
-    const now = Math.floor(Date.now() / 1000);
-    const twoWeeks = 14 * 24 * 60 * 60;
-
-    // 过滤并格式化数据
-    return upcoming
-      .filter(c => {
-        const startTime = c.startTime; // 假设返回的时间戳格式，可能需要根据实际调整
-        return startTime > now && (startTime - now) <= twoWeeks;
-      })
-      .map(c => ({
-        platform: 'AtCoder',
-        name: c.name,
-        url: `https://atcoder.jp/contests/${c.id}`,
-        startTime: c.startTime, // 使用包返回的时间戳
-        duration: c.duration,    // 使用包返回的时长
-        rated: c.rated || true, // 包可能提供了是否Rated的字段，这里做了兼容
-        phase: 'BEFORE'
-      }));
-  } catch (error) {
-    console.error('AtCoder fetch error:', error);
-    return [];
-  }
-}
-
-// 模拟牛客数据（示例，需要自己抓取）
-function mockNowcoderContests() {
-  // 这里可以换成你的爬虫数据接口
-  return [
-    // {
-    //   platform: '牛客',
-    //   name: '牛客周赛 Round 84',
-    //   url: 'https://ac.nowcoder.com/acm/contest/123456',
-    //   startTime: Math.floor(Date.now() / 1000) + 3 * 24 * 60 * 60,
-    //   duration: 2 * 60 * 60,
-    //   rated: true,
-    //   phase: 'BEFORE'
-    // }
-  ];
-}
-
-// 模拟洛谷数据
-function mockLuoguContests() {
-  return [
-    // {
-    //   platform: '洛谷',
-    //   name: '【LGR-xxx】洛谷入门赛',
-    //   url: 'https://www.luogu.com.cn/contest/123456',
-    //   startTime: Math.floor(Date.now() / 1000) + 5 * 24 * 60 * 60,
-    //   duration: 2.5 * 60 * 60,
-    //   rated: true,
-    //   phase: 'BEFORE'
-    // }
-  ];
-}
-
-// 主函数
 async function loadContests() {
   const loadingEl = document.getElementById('loading');
   const listEl = document.getElementById('contest-list');
   
+  const now = new Date();
+  const startStr = now.toISOString().split('T')[0];
+  const end = new Date(now.getTime() + 14 * 24 * 60 * 60 * 1000);
+  const endStr = end.toISOString().split('T')[0];
+
+  const url = `https://clist.by/api/v4/contest/?username=${USERNAME}&api_key=${API_KEY}&start__gte=${startStr}&end__lte=${endStr}&order_by=start`;
+
   try {
-    const [cf, atcoder] = await Promise.all([
-      fetchCFContests(),
-      fetchAtCoderContests()
-    ]);
+    const response = await fetch(url);
+    const data = await response.json();
+    const allContests = data.objects || [];
+
+    // 筛选 CF、AtCoder、牛客
+    const cfContests = allContests.filter(c => c.resource && c.resource.includes('codeforces.com'));
+    const atcoderContests = allContests.filter(c => c.resource && c.resource.includes('atcoder.jp'));
+    const nowcoderContests = allContests.filter(c => c.resource && c.resource.includes('ac.nowcoder.com'));
+    const filtered = [...cfContests, ...atcoderContests, ...nowcoderContests];
     
-    // 合并数据（加上牛客和洛谷的模拟数据）
-    const mockNowcoder = mockNowcoderContests();
-    const mockLuogu = mockLuoguContests();
-    
-    const allContests = [...cf, ...atcoder, ...mockNowcoder, ...mockLuogu]
-      .sort((a, b) => a.startTime - b.startTime);
-    
-    if (allContests.length === 0) {
-      loadingEl.style.display = 'none';
+    // 过滤出 Rated 比赛
+    const ratedContests = filtered.filter(isRatedContest);
+
+    loadingEl.style.display = 'none';
+
+    if (ratedContests.length === 0) {
       listEl.innerHTML = '<p style="text-align: center; color: #718096;">未来14天暂无Rated比赛</p>';
       return;
     }
-    
-    loadingEl.style.display = 'none';
-    
-    let html = '';
-    allContests.forEach(c => {
-      const startDate = formatDate(c.startTime);
-      const durationHours = Math.floor(c.duration / 3600);
-      const durationMinutes = Math.floor((c.duration % 3600) / 60);
-      
-      html += `
-        <div class="contest-item">
-          <div class="contest-header">
-            <span class="contest-platform">${c.platform}</span>
-            <a href="${c.url}" target="_blank" class="contest-name">${c.name}</a>
-            ${c.rated ? '<span class="rated-badge">Rated</span>' : ''}
-          </div>
-          <div class="contest-time">
-            <span>⏰ 开始：${startDate}</span>
-            <span>⏱️ 时长：${durationHours}h${durationMinutes > 0 ? durationMinutes + 'm' : ''}</span>
-          </div>
-        </div>
-      `;
+
+    // 按日期分组
+    const groups = {};
+    ratedContests.forEach(c => {
+      const dateKey = c.start.split('T')[0]; // 取 YYYY-MM-DD 作为分组键
+      if (!groups[dateKey]) groups[dateKey] = [];
+      groups[dateKey].push(c);
     });
-    
+
+    // 生成 HTML
+    let html = '';
+    // 按日期排序（升序）
+    const sortedDates = Object.keys(groups).sort();
+    sortedDates.forEach(dateKey => {
+      const dayContests = groups[dateKey];
+      const dayDisplay = getDayDisplay(dateKey); // 转换为显示格式
+      html += `<div class="contest-day-group">`;
+      html += `<div class="day-title">${dayDisplay}</div>`;
+      html += `<div class="contest-cards-row">`;
+      
+      dayContests.forEach(c => {
+        const startDate = formatDate(c.start);
+        const durationHours = Math.floor(c.duration / 3600);
+        const durationMinutes = Math.floor((c.duration % 3600) / 60);
+        let platform = '未知';
+        if (c.resource.includes('codeforces.com')) platform = 'Codeforces';
+        else if (c.resource.includes('atcoder.jp')) platform = 'AtCoder';
+        else if (c.resource.includes('ac.nowcoder.com')) platform = '牛客';
+
+        html += `
+          <div class="contest-item">
+            <div class="contest-header">
+              <span class="contest-platform">${platform}</span>
+              <a href="${c.href}" target="_blank" class="contest-name">${c.event}</a>
+              <span class="rated-badge">Rated</span>
+            </div>
+            <div class="contest-time">
+              <span>⏰ 开始：${startDate}</span>
+              <span>⏱️ 时长：${durationHours}h${durationMinutes > 0 ? durationMinutes + 'm' : ''}</span>
+            </div>
+          </div>
+        `;
+      });
+      
+      html += `</div>`; // 关闭 contest-cards-row
+      html += `</div>`; // 关闭 contest-day-group
+    });
+
     listEl.innerHTML = html;
-    
   } catch (error) {
     loadingEl.style.display = 'none';
-    listEl.innerHTML = `<div class="error-message">❌ 加载失败，请稍后重试</div>`;
+    listEl.innerHTML = '<div class="error-message">❌ 加载失败，请稍后重试</div>';
     console.error('Load error:', error);
   }
 }
 
-// 页面加载后执行
 document.addEventListener('DOMContentLoaded', loadContests);
 </script>
 
