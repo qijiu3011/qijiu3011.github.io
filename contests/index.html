@@ -27,7 +27,7 @@
 <meta property="og:description" content="📅 未来14天 Rated 比赛   加载中...       #contest-tracker {   font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, sans-serif;   max-width: 800px;   margin: 0 auto;   padding: 20px; } .conte">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-03-09T16:00:00.000Z">
-<meta property="article:modified_time" content="2026-03-10T13:03:36.318Z">
+<meta property="article:modified_time" content="2026-03-10T13:13:23.983Z">
 <meta property="article:author" content="qijiu3011">
 <meta property="article:tag" content="ACM,算法,编程">
 <meta name="twitter:card" content="summary_large_image">
@@ -371,7 +371,7 @@ async function fetchAtCoderContests() {
         url: `https://atcoder.jp/contests/${c.id}`,
         startTime: new Date(c.start_epoch_second).getTime() / 1000,
         duration: c.duration_second,
-        rated: c.rated_range !== '-' && c.rated_range !== '0',
+        rated: c.rated_range !== '-' && c.rated_range !== '0' || c.id.includes('abc'),
         phase: 'BEFORE'
       }));
   } catch (error) {
