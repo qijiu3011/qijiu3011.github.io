@@ -27,7 +27,7 @@
 <meta property="og:description" content="📅 未来14天 Rated 比赛   加载中...       #contest-tracker {   font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, sans-serif;   max-width: 800px;   margin: 0 auto;   padding: 20px; } .conte">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-03-09T16:00:00.000Z">
-<meta property="article:modified_time" content="2026-03-10T13:13:23.983Z">
+<meta property="article:modified_time" content="2026-03-10T14:08:27.521Z">
 <meta property="article:author" content="qijiu3011">
 <meta property="article:tag" content="ACM,算法,编程">
 <meta name="twitter:card" content="summary_large_image">
@@ -350,28 +350,29 @@ async function fetchCFContests() {
   }
 }
 
-// 获取AtCoder比赛（使用第三方API代理）
+// 引入新安装的包
+import { fetchUpcomingContests } from '@qatadaazzeh/atcoder-api';
+
 async function fetchAtCoderContests() {
   try {
-    // 使用 kenkoooo 的公开 API
-    const response = await fetch('https://kenkoooo.com/atcoder/resources/contests.json');
-    const contests = await response.json();
-    
+    // 直接调用包提供的函数获取未来比赛
+    const upcoming = await fetchUpcomingContests();
     const now = Math.floor(Date.now() / 1000);
     const twoWeeks = 14 * 24 * 60 * 60;
-    
-    return contests
+
+    // 过滤并格式化数据
+    return upcoming
       .filter(c => {
-        const startTime = new Date(c.start_epoch_second).getTime() / 1000;
+        const startTime = c.startTime; // 假设返回的时间戳格式，可能需要根据实际调整
         return startTime > now && (startTime - now) <= twoWeeks;
       })
       .map(c => ({
         platform: 'AtCoder',
-        name: c.title,
+        name: c.name,
         url: `https://atcoder.jp/contests/${c.id}`,
-        startTime: new Date(c.start_epoch_second).getTime() / 1000,
-        duration: c.duration_second,
-        rated: c.rated_range !== '-' && c.rated_range !== '0' || c.id.includes('abc'),
+        startTime: c.startTime, // 使用包返回的时间戳
+        duration: c.duration,    // 使用包返回的时长
+        rated: c.rated || true, // 包可能提供了是否Rated的字段，这里做了兼容
         phase: 'BEFORE'
       }));
   } catch (error) {
