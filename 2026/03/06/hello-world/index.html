@@ -421,7 +421,15 @@ int main()
               
             </div>
 
-            
+            <!-- 在文章页底部添加 Twikoo 容器和脚本 -->
+            <div id="tcomment" class="twikoo"></div>
+            <script src="https://cdn.jsdelivr.net/npm/twikoo@1.6.41/dist/twikoo.all.min.js"></script>
+            <script>
+            twikoo.init({
+              envId: 'https://twikoo-peach-iota.vercel.app',
+              el: '#tcomment'
+            });
+            </script>
           </article>
         </div>
       </div>
