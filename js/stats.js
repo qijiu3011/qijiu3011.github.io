@@ -1,32 +1,15 @@
 document.addEventListener('DOMContentLoaded', function() {
     const workerUrl = 'https://blog-like.2220795057.workers.dev'; // 你的Worker地址
 
-    // 判断当前页面是否是文章页（根据你的 URL 结构调整）
+    // 判断当前页面是否是文章页
     const isPostPage = window.location.pathname.includes('/20') || 
                        window.location.pathname.includes('/post') ||
                        (window.location.pathname !== '/' && 
                         !window.location.pathname.startsWith('/page') &&
                         window.location.pathname.split('/').length > 2);
 
-    // ===== 加载所有统计数据 =====
-    async function loadAllStats() {
-        // 加载阅读数
-        const viewSpans = document.querySelectorAll('.view-count');
-        for (const span of viewSpans) {
-            const url = span.dataset.url;
-            if (!url) continue;
-            try {
-                const response = await fetch(`${workerUrl}/views?url=${encodeURIComponent(url)}`);
-                const data = await response.json();
-                if (data.views !== undefined) {
-                    span.textContent = data.views;
-                }
-            } catch (error) {
-                console.error('加载阅读数失败:', error);
-            }
-        }
-
-        // 加载点赞数
+    // ===== 加载点赞数 =====
+    async function loadLikeCounts() {
         const likeSpans = document.querySelectorAll('.like-count');
         for (const span of likeSpans) {
             const card = span.closest('[data-url]') || span.closest('.like-meta, .like-display');
@@ -34,7 +17,6 @@ document.addEventListener('DOMContentLoaded', function() {
             if (!url) continue;
 
             try {
-                // 使用 GET 请求获取点赞数
                 const response = await fetch(`${workerUrl}/like?url=${encodeURIComponent(url)}`);
                 const data = await response.json();
                 if (data.likes !== undefined) {
@@ -47,16 +29,41 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 if (hasLiked) {
                     const icon = card.querySelector('span:first-child, i');
-                    if (icon) icon.style.color = '#ff6b6b'; // 变红
+                    if (icon) icon.style.color = '#ff6b6b';
                     const btn = card.closest('.like-meta');
                     if (btn && isPostPage) {
-                        btn.style.pointerEvents = 'none'; // 禁用点击
+                        btn.style.pointerEvents = 'none';
                     }
                 }
             } catch (error) {
                 console.error('加载点赞数失败:', error);
             }
         }
+    }
+
+    // ===== 加载评论数 =====
+    function loadCommentCounts() {
+        const commentMetas = document.querySelectorAll('.comment-meta');
+        if (!commentMetas.length) return;
+
+        // 如果 Twikoo 还未加载，则等待重试
+        if (typeof twikoo === 'undefined') {
+            setTimeout(loadCommentCounts, 500);
+            return;
+        }
+
+        commentMetas.forEach(meta => {
+            const url = meta.dataset.url;
+            const countSpan = meta.querySelector('.comment-count');
+            if (!url || !countSpan) return;
+
+            twikoo.getCount({ url: url }).then(res => {
+                countSpan.textContent = res.count || 0;
+            }).catch(err => {
+                console.error('获取评论数失败:', err);
+                countSpan.textContent = '0';
+            });
+        });
     }
 
     // ===== 点赞功能（仅在文章页生效）=====
@@ -68,7 +75,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
             if (!url || !countSpan || !icon) return;
 
-            // 检查是否已点赞
             const cookieKey = `liked_${btoa(url)}`;
             const hasLiked = document.cookie.split('; ').some(row => row.startsWith(cookieKey + '='));
 
@@ -81,7 +87,6 @@ document.addEventListener('DOMContentLoaded', function() {
             btn.addEventListener('click', async function(e) {
                 e.preventDefault();
 
-                // 再次检查（防止快速双击）
                 if (document.cookie.split('; ').some(row => row.startsWith(cookieKey + '='))) {
                     alert('你已经点过赞啦～');
                     return;
@@ -112,6 +117,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // 页面加载后获取所有统计数据
-    loadAllStats();
+    // 加载点赞数和评论数
+    loadLikeCounts();
+    loadCommentCounts(); // 自动重试直到 Twikoo 可用
 });

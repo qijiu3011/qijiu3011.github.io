@@ -166,11 +166,9 @@ article.index-info:hover {
   color: var(--blue-cloud) !important;
 }
 
-/* ===== 阅读数 ===== */
-#busuanzi_value_page_pv {
-  color: var(--blue-cloud) !important;
-  font-weight: 500 !important;
-  margin-left: 0.1rem;
+.comment-count {
+    color: var(--blue-cloud);
+    font-weight: 500;
 }
 
 /* ===== 点赞按钮 ===== */
