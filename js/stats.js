@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     const workerUrl = 'https://blog-like.2220795057.workers.dev'; // 你的Worker地址
+    const twikooEnvId = 'https://twikoo-peach-iota.vercel.app';   // 你的Twikoo环境ID
 
     // 判断当前页面是否是文章页
     const isPostPage = window.location.pathname.includes('/20') || 
@@ -46,8 +47,9 @@ document.addEventListener('DOMContentLoaded', function() {
         const commentMetas = document.querySelectorAll('.comment-meta');
         if (!commentMetas.length) return;
 
-        // 如果 Twikoo 还未加载，则等待重试
+        // 确保 Twikoo 脚本已加载
         if (typeof twikoo === 'undefined') {
+            console.log('Twikoo 未就绪，500ms后重试');
             setTimeout(loadCommentCounts, 500);
             return;
         }
@@ -57,10 +59,13 @@ document.addEventListener('DOMContentLoaded', function() {
             const countSpan = meta.querySelector('.comment-count');
             if (!url || !countSpan) return;
 
-            twikoo.getCount({ url: url }).then(res => {
+            twikoo.getCount({
+                envId: twikooEnvId,
+                url: url
+            }).then(res => {
                 countSpan.textContent = res.count || 0;
             }).catch(err => {
-                console.error('获取评论数失败:', err);
+                console.error('获取评论数失败:', err, url);
                 countSpan.textContent = '0';
             });
         });
@@ -119,5 +124,5 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // 加载点赞数和评论数
     loadLikeCounts();
-    loadCommentCounts(); // 自动重试直到 Twikoo 可用
+    loadCommentCounts();
 });
