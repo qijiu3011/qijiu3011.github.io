@@ -27,7 +27,7 @@
 <meta property="og:description" content="题目链接 牛客周赛94 B - 小苯购物 牛客周赛94 C - 小苯的与三角形 牛客周赛94 D - 小苯的序列染色 牛客周赛97 C -移动   B - 小苯购物问题描述有 3 个优惠券，每个优惠券有两个参数 a、b：  当当前商品价格 ≥ a 时，可以减少 b 元。  每个优惠券 最多使用一次，且可以选择 使用或不使用。 给定商品初始价格 n，求最终价格的 最小值。  考察知识点 暴力枚举 全">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-03-13T16:00:00.000Z">
-<meta property="article:modified_time" content="2026-03-15T10:56:01.776Z">
+<meta property="article:modified_time" content="2026-03-16T11:05:40.399Z">
 <meta property="article:author" content="qijiu3011">
 <meta property="article:tag" content="牛客">
 <meta property="article:tag" content="周赛">
@@ -230,7 +230,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.5k 字
+          1.8k 字
         
       </span>
     
@@ -241,7 +241,7 @@
         
         
         
-          13 分钟
+          16 分钟
         
       </span>
     
@@ -438,6 +438,30 @@
 </ul>
 <hr>
 <h2 id="代码实现-4"><a href="#代码实现-4" class="headerlink" title="代码实现"></a>代码实现</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">solve</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-type">int</span> n, q;<br>    cin &gt;&gt; n &gt;&gt; q;<br>    string s;<br>    cin &gt;&gt; s;<br>    vector&lt;<span class="hljs-type">int</span>&gt; a;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; (<span class="hljs-type">int</span>)s.<span class="hljs-built_in">size</span>(); i++)<br>    &#123;<br>        <span class="hljs-keyword">if</span>(s[i] == <span class="hljs-string">&#x27;#&#x27;</span>) a.<span class="hljs-built_in">push_back</span>(i + <span class="hljs-number">1</span>);<br>    &#125;<br>    <span class="hljs-keyword">while</span>(q--)<br>    &#123;<br>        <span class="hljs-type">int</span> x , y;<br>        cin &gt;&gt; x &gt;&gt; y;<br>        <span class="hljs-type">int</span> l = <span class="hljs-built_in">min</span>(x, y);<br>        <span class="hljs-type">int</span> r = <span class="hljs-built_in">max</span>(x, y);<br>        <span class="hljs-keyword">auto</span> it_r = <span class="hljs-built_in">upper_bound</span>(<span class="hljs-built_in">ALL</span>(a), r);<br>        <span class="hljs-keyword">auto</span> it_l = <span class="hljs-built_in">lower_bound</span>(<span class="hljs-built_in">ALL</span>(a), l);<br>        <span class="hljs-keyword">if</span>(it_r == it_l)<br>        &#123;<br>            cout &lt;&lt; <span class="hljs-number">0</span> &lt;&lt; endl;<br>            <span class="hljs-keyword">continue</span>;<br>        &#125;<br>        it_r --;<br>        cout &lt;&lt; *it_r - *it_l + <span class="hljs-number">1</span> &lt;&lt; endl; <br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<hr>
+<h1 id="E-平衡排列"><a href="#E-平衡排列" class="headerlink" title="E - 平衡排列"></a>E - 平衡排列</h1><h2 id="问题描述-5"><a href="#问题描述-5" class="headerlink" title="问题描述"></a>问题描述</h2><p>定义一个排列 <code>p</code> 为 <strong>平衡排列</strong>，当且仅当存在一个索引 <code>mid</code> 使得：</p>
+<p>$$<br>\sum_{i&#x3D;1}^{mid} p_i &#x3D; \sum_{i&#x3D;mid+1}^{n} p_i<br>$$</p>
+<p>现给定 <code>n</code>，请构造一个长度为 <code>n</code> 的平衡排列。</p>
+<p>若不存在这样的排列，输出 <code>-1</code>。</p>
+<hr>
+<h2 id="考察知识点-5"><a href="#考察知识点-5" class="headerlink" title="考察知识点"></a>考察知识点</h2><ul>
+<li>贪心构造</li>
+<li>数学性质</li>
+<li>子集和</li>
+</ul>
+<hr>
+<h2 id="题解思路-5"><a href="#题解思路-5" class="headerlink" title="题解思路"></a>题解思路</h2><p>若要满足两侧和相等，则整个排列的总和必须为偶数。</p>
+<p>排列 <code>1..n</code> 的总和为：</p>
+<p>$$<br>S &#x3D; \frac{n(n+1)}{2}<br>$$</p>
+<p>若 <code>S</code> 为奇数，则无法分成两个相等的部分，直接输出 <code>-1</code>。</p>
+<p>若 <code>S</code> 为偶数，则目标是构造一组数使其和为：</p>
+<p>$$<br>\frac{S}{2}<br>$$</p>
+<p>可以采用贪心策略：</p>
+<p>从 <code>n</code> 到 <code>1</code> 依次遍历，如果当前数字加入左侧不会超过目标值，就放入左侧，否则放入右侧。</p>
+<p>最终将左侧与右侧拼接即可得到满足条件的排列。</p>
+<hr>
+<h2 id="代码实现-5"><a href="#代码实现-5" class="headerlink" title="代码实现"></a>代码实现</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">solve</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-type">int</span> n;<br>    cin &gt;&gt; n;<br>    <span class="hljs-keyword">if</span>((n * (n + <span class="hljs-number">1</span>) / <span class="hljs-number">2</span>) % <span class="hljs-number">2</span>)<span class="hljs-comment">//不#define int long long 会超时</span><br>    &#123;<br>        cout &lt;&lt; <span class="hljs-number">-1</span> &lt;&lt; endl;<br>        <span class="hljs-keyword">return</span>;<br>    &#125;<br>    <span class="hljs-type">int</span> s = <span class="hljs-number">0</span>;<br>    <span class="hljs-type">int</span> mid = n * (n + <span class="hljs-number">1</span>) / <span class="hljs-number">4</span>;<br>    vector&lt;<span class="hljs-type">int</span>&gt; l, r;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = n; i &gt;= <span class="hljs-number">1</span>; i--)<br>    &#123;<br>        <span class="hljs-keyword">if</span>(s + i &lt;= mid)<br>        &#123;<br>            l.<span class="hljs-built_in">push_back</span>(i);<br>            s += i;<br>        &#125;<br>        <span class="hljs-keyword">else</span> r.<span class="hljs-built_in">push_back</span>(i);<br>    &#125;<br>    <span class="hljs-built_in">reverse</span>(<span class="hljs-built_in">ALL</span>(r));<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; (<span class="hljs-type">int</span>)l.<span class="hljs-built_in">size</span>(); i++) cout &lt;&lt; l[i] &lt;&lt; <span class="hljs-string">&quot; &quot;</span>;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; (<span class="hljs-type">int</span>)r.<span class="hljs-built_in">size</span>(); i++) cout &lt;&lt; r[i] &lt;&lt; <span class="hljs-string">&quot; &quot;</span>;<br>    cout &lt;&lt; endl;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <hr>
 
