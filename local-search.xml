@@ -23,6 +23,33 @@
   
   
   <entry>
+    <title>3月6日天梯赛选拔2补题（牛客周赛99,103）</title>
+    <link href="/2026/03/16/3%E6%9C%8813%E6%97%A5%E5%A4%A9%E6%A2%AF%E8%B5%9B%E9%80%89%E6%8B%942%E8%A1%A5%E9%A2%98/"/>
+    <url>/2026/03/16/3%E6%9C%8813%E6%97%A5%E5%A4%A9%E6%A2%AF%E8%B5%9B%E9%80%89%E6%8B%942%E8%A1%A5%E9%A2%98/</url>
+    
+    <content type="html"><![CDATA[<h1 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h1><ul><li><a href="https://ac.nowcoder.com/acm/contest/114593/D">牛客周赛103 D - 好串</a></li></ul><hr><h1 id="D-好串"><a href="#D-好串" class="headerlink" title="D - 好串"></a>D - 好串</h1><h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>定义长度为 2 的子串 <code>&quot;10&quot;</code> 或 <code>&quot;01&quot;</code> 为好串。</p><p>给定 01 串 <code>s</code>，每次可翻转一个字符，求最少操作次数，使好串数量 ≥ 3。</p><hr><h2 id="考察知识点"><a href="#考察知识点" class="headerlink" title="考察知识点"></a>考察知识点</h2><ul><li>贪心</li><li>分类讨论</li></ul><hr><h2 id="题解思路"><a href="#题解思路" class="headerlink" title="题解思路"></a>题解思路</h2><p>设 <code>cnt</code> 为相邻不同对数。</p><ul><li><code>cnt ≥ 3</code> → <code>0</code></li><li><code>cnt = 0</code> → <code>2</code></li><li><code>cnt = 1 / 2</code>：<ul><li>特判长度 <code>n = 4</code> 且为 <code>1100 / 0011 / 1001 / 0110</code> → <code>2</code></li><li>否则 → <code>1</code></li></ul></li></ul><hr><h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">solve</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-type">int</span> n, res = <span class="hljs-number">10</span>;<br>    cin &gt;&gt; n;<br>    string s;<br>    cin &gt;&gt; s;<br>    <span class="hljs-type">int</span> cnt = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; n - <span class="hljs-number">1</span>; i++) <span class="hljs-keyword">if</span>(s[i] != s[i + <span class="hljs-number">1</span>]) cnt ++;<br>    <span class="hljs-keyword">if</span>(cnt &gt;= <span class="hljs-number">3</span>) <br>    &#123;<br>        cout &lt;&lt; <span class="hljs-number">0</span> &lt;&lt; endl;<br>        <span class="hljs-keyword">return</span>;<br>    &#125;<br>    <span class="hljs-keyword">if</span>(s.<span class="hljs-built_in">find_first_not_of</span>(<span class="hljs-string">&#x27;0&#x27;</span>) == string::npos || s.<span class="hljs-built_in">find_first_not_of</span>(<span class="hljs-string">&#x27;1&#x27;</span>) == string::npos)<br>    &#123;<br>        cout &lt;&lt; <span class="hljs-number">2</span> &lt;&lt; endl;<br>        <span class="hljs-keyword">return</span>;<br>    &#125;<br>    <span class="hljs-keyword">if</span>(n == <span class="hljs-number">4</span>)<br>    &#123;<br>        <span class="hljs-keyword">if</span>(s == <span class="hljs-string">&quot;1100&quot;</span> || s == <span class="hljs-string">&quot;0011&quot;</span> || s == <span class="hljs-string">&quot;1001&quot;</span> || s == <span class="hljs-string">&quot;0110&quot;</span>)<br>        &#123;<br>            cout &lt;&lt; <span class="hljs-number">2</span> &lt;&lt; endl;<br>            <span class="hljs-keyword">return</span>;<br>        &#125;<br>    &#125;<br>    cout &lt;&lt; <span class="hljs-number">1</span> &lt;&lt; endl;<br>&#125;<br></code></pre></td></tr></table></figure><hr>]]></content>
+    
+    
+    <categories>
+      
+      <category>算法竞赛</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>牛客</tag>
+      
+      <tag>周赛</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>3月6日天梯赛选拔1补题（牛客周赛94,97）</title>
     <link href="/2026/03/14/3%E6%9C%886%E6%97%A5%E5%A4%A9%E6%A2%AF%E8%B5%9B%E9%80%89%E6%8B%941%E8%A1%A5%E9%A2%98/"/>
     <url>/2026/03/14/3%E6%9C%886%E6%97%A5%E5%A4%A9%E6%A2%AF%E8%B5%9B%E9%80%89%E6%8B%941%E8%A1%A5%E9%A2%98/</url>
