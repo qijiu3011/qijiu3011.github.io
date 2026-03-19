@@ -280,3 +280,47 @@ article.index-info:hover {
   }
 }
 
+.collections-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.collection-card {
+  background: var(--bg-main);
+  border: 1px solid var(--blue-mist);
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(66,153,225,0.08);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.collection-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(66,153,225,0.15);
+  border-color: var(--blue-cloud);
+}
+
+.collection-card h3 {
+  margin: 0 0 0.5rem 0;
+  color: var(--text-primary);
+  font-size: 1.3rem;
+}
+
+.collection-card p {
+  color: var(--text-light);
+  margin: 0 0 1rem 0;
+  line-height: 1.6;
+}
+
+.collection-link {
+  display: inline-block;
+  color: var(--blue-cloud);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.collection-link:hover {
+  color: var(--link-hover);
+}
