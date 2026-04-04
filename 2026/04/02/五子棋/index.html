@@ -19,23 +19,22 @@
   <meta name="author" content="qijiu3011">
   <meta name="keywords" content="ACM,算法,编程">
   
-    <meta name="description" content="题目链接 牛客周赛103 D - 好串   D - 好串问题描述定义长度为 2 的子串 &quot;10&quot; 或 &quot;01&quot; 为好串。 给定 01 串 s，每次可翻转一个字符，求最少操作次数，使好串数量 ≥ 3。  考察知识点 贪心 分类讨论   题解思路设 cnt 为相邻不同对数。  cnt ≥ 3 → 0 cnt &#x3D; 0 → 2 cnt &#x3D; 1 &#x2F; 2： 特判长度 n">
+    <meta name="description" content="12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394959697989910010110210">
 <meta property="og:type" content="article">
-<meta property="og:title" content="3月6日天梯赛选拔2补题（牛客周赛99,103）">
-<meta property="og:url" content="https://qijiu3011.github.io/2026/03/16/3%E6%9C%8813%E6%97%A5%E5%A4%A9%E6%A2%AF%E8%B5%9B%E9%80%89%E6%8B%942%E8%A1%A5%E9%A2%98/index.html">
+<meta property="og:title" content="MianYy的博客">
+<meta property="og:url" content="https://qijiu3011.github.io/2026/04/02/%E4%BA%94%E5%AD%90%E6%A3%8B/index.html">
 <meta property="og:site_name" content="MianYy的博客">
-<meta property="og:description" content="题目链接 牛客周赛103 D - 好串   D - 好串问题描述定义长度为 2 的子串 &quot;10&quot; 或 &quot;01&quot; 为好串。 给定 01 串 s，每次可翻转一个字符，求最少操作次数，使好串数量 ≥ 3。  考察知识点 贪心 分类讨论   题解思路设 cnt 为相邻不同对数。  cnt ≥ 3 → 0 cnt &#x3D; 0 → 2 cnt &#x3D; 1 &#x2F; 2： 特判长度 n">
+<meta property="og:description" content="12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394959697989910010110210">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2026-03-15T16:00:00.000Z">
-<meta property="article:modified_time" content="2026-03-18T11:58:53.961Z">
+<meta property="article:published_time" content="2026-04-02T07:31:01.825Z">
+<meta property="article:modified_time" content="2026-04-02T16:19:55.143Z">
 <meta property="article:author" content="qijiu3011">
-<meta property="article:tag" content="牛客">
-<meta property="article:tag" content="周赛">
+<meta property="article:tag" content="ACM,算法,编程">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>3月6日天梯赛选拔2补题（牛客周赛99,103） - MianYy的博客</title>
+  <title>MianYy的博客</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -219,7 +218,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="3月6日天梯赛选拔2补题（牛客周赛99,103）"></span>
+            <span id="subtitle" data-typed-text=""></span>
           
         </div>
 
@@ -230,8 +229,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2026-03-16 00:00" pubdate>
-          2026年3月16日 凌晨
+        <time datetime="2026-04-02 15:31" pubdate>
+          2026年4月2日 下午
         </time>
       </span>
     
@@ -242,7 +241,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          222 字
+          445 字
         
       </span>
     
@@ -253,7 +252,7 @@
         
         
         
-          2 分钟
+          4 分钟
         
       </span>
     
@@ -290,38 +289,12 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">3月6日天梯赛选拔2补题（牛客周赛99,103）</h1>
+            <h1 id="seo-header"></h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h1><ul>
-<li><a target="_blank" rel="noopener" href="https://ac.nowcoder.com/acm/contest/114593/D">牛客周赛103 D - 好串</a></li>
-</ul>
-<hr>
-<h1 id="D-好串"><a href="#D-好串" class="headerlink" title="D - 好串"></a>D - 好串</h1><h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>定义长度为 2 的子串 <code>&quot;10&quot;</code> 或 <code>&quot;01&quot;</code> 为好串。</p>
-<p>给定 01 串 <code>s</code>，每次可翻转一个字符，求最少操作次数，使好串数量 ≥ 3。</p>
-<hr>
-<h2 id="考察知识点"><a href="#考察知识点" class="headerlink" title="考察知识点"></a>考察知识点</h2><ul>
-<li>贪心</li>
-<li>分类讨论</li>
-</ul>
-<hr>
-<h2 id="题解思路"><a href="#题解思路" class="headerlink" title="题解思路"></a>题解思路</h2><p>设 <code>cnt</code> 为相邻不同对数。</p>
-<ul>
-<li><code>cnt ≥ 3</code> → <code>0</code></li>
-<li><code>cnt = 0</code> → <code>2</code></li>
-<li><code>cnt = 1 / 2</code>：<ul>
-<li>特判长度 <code>n = 4</code> 且为 <code>1100 / 0011 / 1001 / 0110</code> → <code>2</code></li>
-<li>否则 → <code>1</code></li>
-</ul>
-</li>
-</ul>
-<hr>
-<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">solve</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-type">int</span> n, res = <span class="hljs-number">10</span>;<br>    cin &gt;&gt; n;<br>    string s;<br>    cin &gt;&gt; s;<br>    <span class="hljs-type">int</span> cnt = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; n - <span class="hljs-number">1</span>; i++) <span class="hljs-keyword">if</span>(s[i] != s[i + <span class="hljs-number">1</span>]) cnt ++;<br>    <span class="hljs-keyword">if</span>(cnt &gt;= <span class="hljs-number">3</span>) <br>    &#123;<br>        cout &lt;&lt; <span class="hljs-number">0</span> &lt;&lt; endl;<br>        <span class="hljs-keyword">return</span>;<br>    &#125;<br>    <span class="hljs-keyword">if</span>(s.<span class="hljs-built_in">find_first_not_of</span>(<span class="hljs-string">&#x27;0&#x27;</span>) == string::npos || s.<span class="hljs-built_in">find_first_not_of</span>(<span class="hljs-string">&#x27;1&#x27;</span>) == string::npos)<br>    &#123;<br>        cout &lt;&lt; <span class="hljs-number">2</span> &lt;&lt; endl;<br>        <span class="hljs-keyword">return</span>;<br>    &#125;<br>    <span class="hljs-keyword">if</span>(n == <span class="hljs-number">4</span>)<br>    &#123;<br>        <span class="hljs-keyword">if</span>(s == <span class="hljs-string">&quot;1100&quot;</span> || s == <span class="hljs-string">&quot;0011&quot;</span> || s == <span class="hljs-string">&quot;1001&quot;</span> || s == <span class="hljs-string">&quot;0110&quot;</span>)<br>        &#123;<br>            cout &lt;&lt; <span class="hljs-number">2</span> &lt;&lt; endl;<br>            <span class="hljs-keyword">return</span>;<br>        &#125;<br>    &#125;<br>    cout &lt;&lt; <span class="hljs-number">1</span> &lt;&lt; endl;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<hr>
-
+                <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-meta">#<span class="hljs-keyword">define</span> endl <span class="hljs-string">&#x27;\n&#x27;</span></span><br><br><span class="hljs-type">const</span> <span class="hljs-type">int</span> N = <span class="hljs-number">15</span>;<br><span class="hljs-type">int</span> b[N][N];<br><span class="hljs-type">int</span> nowPl = <span class="hljs-number">1</span>;<span class="hljs-comment">//1黑2白</span><br><span class="hljs-type">int</span> cnt = <span class="hljs-number">0</span>;<br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">clear</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br><span class="hljs-meta">#<span class="hljs-keyword">ifdef</span> _WIN32</span><br>    <span class="hljs-built_in">system</span>(<span class="hljs-string">&quot;cls&quot;</span>);<br><span class="hljs-meta">#<span class="hljs-keyword">else</span></span><br>    <span class="hljs-built_in">system</span>(<span class="hljs-string">&quot;clear&quot;</span>);<br><span class="hljs-meta">#<span class="hljs-keyword">endif</span></span><br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">print</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-built_in">clear</span>();<br>    cout &lt;&lt; <span class="hljs-string">&#x27; &#x27;</span>;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; N; i++) cout &lt;&lt; (i + <span class="hljs-number">1</span>) % <span class="hljs-number">10</span> &lt;&lt; <span class="hljs-string">&quot; &quot;</span>;<br>    cout &lt;&lt; endl;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; N; i++)<br>    &#123;<br>        cout &lt;&lt; (i + <span class="hljs-number">1</span>) % <span class="hljs-number">10</span> &lt;&lt; <span class="hljs-string">&quot; &quot;</span>;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j = <span class="hljs-number">0</span>; j &lt; N; j++)<br>        &#123;<br>            <span class="hljs-type">char</span> c = <span class="hljs-string">&#x27;.&#x27;</span>;<br>            <span class="hljs-keyword">if</span>(b[i][j] == <span class="hljs-number">1</span>) c = <span class="hljs-string">&#x27;X&#x27;</span>;<br>            <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (b[i][j] == <span class="hljs-number">2</span>) c = <span class="hljs-string">&#x27;O&#x27;</span>;<br>            cout &lt;&lt; c &lt;&lt; <span class="hljs-string">&quot; &quot;</span>;<br>        &#125;<br>        cout &lt;&lt; endl;<br>    &#125;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">checkWin</span><span class="hljs-params">(<span class="hljs-type">int</span> row, <span class="hljs-type">int</span> col, <span class="hljs-type">int</span> now)</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-type">int</span> d[<span class="hljs-number">4</span>][<span class="hljs-number">2</span>] = &#123;&#123;<span class="hljs-number">1</span>, <span class="hljs-number">0</span>&#125;, &#123;<span class="hljs-number">0</span>, <span class="hljs-number">1</span>&#125;, &#123;<span class="hljs-number">1</span>, <span class="hljs-number">1</span>&#125;, &#123;<span class="hljs-number">1</span>, <span class="hljs-number">-1</span>&#125;&#125;;<br>    <span class="hljs-comment">//int dx[4] = &#123;1, 0, 1, 1&#125;, dy[4] = &#123;0, 1, 1, -1&#125;;</span><br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> &amp;n : d)<br>    <span class="hljs-comment">//for(int i = 0; i &lt; n; i++)</span><br>    &#123;<br>        <span class="hljs-type">int</span> dx = n[<span class="hljs-number">0</span>], dy = n[<span class="hljs-number">1</span>];<br>        <span class="hljs-type">int</span> c = <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= <span class="hljs-number">4</span>; i++)<br>        &#123;<br>            <span class="hljs-type">int</span> nx = row + dx * i, ny = col + dy * i;<br>            <span class="hljs-keyword">if</span>(nx &lt; <span class="hljs-number">0</span> || nx &gt;= N || ny &lt; <span class="hljs-number">0</span> || ny &gt;= N) <span class="hljs-keyword">break</span>;<br>            <span class="hljs-keyword">if</span>(b[nx][ny] == now) c++;<br>            <span class="hljs-keyword">else</span> <span class="hljs-keyword">break</span>;<br>        &#125;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= <span class="hljs-number">4</span>; i++)<br>        &#123;<br>            <span class="hljs-type">int</span> nx = row - dx * i, ny = col - dy * i;<br>            <span class="hljs-keyword">if</span>(nx &lt; <span class="hljs-number">0</span> || nx &gt;= N || ny &lt; <span class="hljs-number">0</span> || ny &gt;= N) <span class="hljs-keyword">break</span>;<br>            <span class="hljs-keyword">if</span>(b[nx][ny] == now) c++;<br>            <span class="hljs-keyword">else</span> <span class="hljs-keyword">break</span>;<br>        &#125;<br>        <span class="hljs-keyword">if</span>(c &gt;= <span class="hljs-number">5</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">check</span><span class="hljs-params">(<span class="hljs-type">int</span> row, <span class="hljs-type">int</span> col)</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">if</span> (row &lt; <span class="hljs-number">0</span> || row &gt;= N || col &lt; <span class="hljs-number">0</span> || col &gt;= N) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>    <span class="hljs-keyword">if</span> (b[row][col] != <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>    b[row][col] = nowPl;<br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">nowPlayer</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    nowPl = (nowPl == <span class="hljs-number">1</span>) ? <span class="hljs-number">2</span> : <span class="hljs-number">1</span>;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-type">int</span> row, col;<br>    <span class="hljs-keyword">while</span>(<span class="hljs-number">1</span>)<br>    &#123;<br>        <span class="hljs-built_in">print</span>();<br>        cout &lt;&lt; <span class="hljs-string">&quot;玩家: &quot;</span> &lt;&lt; nowPl &lt;&lt; ((nowPl == <span class="hljs-number">1</span>) ? <span class="hljs-string">&quot;(X)&quot;</span> : <span class="hljs-string">&quot;(O)&quot;</span>) &lt;&lt; <span class="hljs-string">&quot; 落子&quot;</span> &lt;&lt; endl;<br>        cin &gt;&gt; row &gt;&gt; col;<br>        row--, col--;<br>        <span class="hljs-keyword">if</span>(!<span class="hljs-built_in">check</span>(row, col))<br>        &#123;<br>            cout &lt;&lt; <span class="hljs-string">&quot;无效位置，按任意键重新输入...&quot;</span> &lt;&lt; endl;<br>            cin.<span class="hljs-built_in">ignore</span>(); cin.<span class="hljs-built_in">get</span>();<br>            <span class="hljs-keyword">continue</span>;<br>        &#125;<br>        cnt++;<br>        <span class="hljs-keyword">if</span>(<span class="hljs-built_in">checkWin</span>(row, col, nowPl))<br>        &#123;<br>            <span class="hljs-built_in">print</span>();<br>            cout &lt;&lt; <span class="hljs-string">&quot;玩家 &quot;</span> &lt;&lt; nowPl &lt;&lt; <span class="hljs-string">&quot; 胜利！&quot;</span> &lt;&lt; endl;<br>            <span class="hljs-keyword">break</span>;<br>        &#125;<br>        <span class="hljs-keyword">if</span>(cnt == N * N)<br>        &#123;<br>            <span class="hljs-built_in">print</span>();<br>            cout &lt;&lt; <span class="hljs-string">&quot;棋盘下满，双方平局！&quot;</span> &lt;&lt; endl;<br>            <span class="hljs-keyword">break</span>;<br>        &#125;<br>        <span class="hljs-built_in">nowPlayer</span>();<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
                 
               </div>
             
@@ -329,36 +302,6 @@
             <div>
               <div class="post-metas my-3">
   
-    <div class="post-meta mr-3 d-flex align-items-center">
-      <i class="iconfont icon-category"></i>
-      
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/" class="category-chain-item">算法竞赛</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-    </div>
-  
-  
-    <div class="post-meta">
-      <i class="iconfont icon-tags"></i>
-      
-        <a href="/tags/%E7%89%9B%E5%AE%A2/" class="print-no-link">#牛客</a>
-      
-        <a href="/tags/%E5%91%A8%E8%B5%9B/" class="print-no-link">#周赛</a>
-      
-    </div>
   
 </div>
 
@@ -368,8 +311,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>3月6日天梯赛选拔2补题（牛客周赛99,103）</div>
-      <div>https://qijiu3011.github.io/2026/03/16/3月13日天梯赛选拔2补题/</div>
+      <div></div>
+      <div>https://qijiu3011.github.io/2026/04/02/五子棋/</div>
     </div>
     <div class="license-meta">
       
@@ -381,7 +324,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2026年3月16日</div>
+          <div>2026年4月2日</div>
         </div>
       
       
@@ -411,13 +354,13 @@
               <!-- 文章元数据：阅读数 + 点赞 -->
               <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 1.5rem; margin: 1rem 0; padding: 0.5rem 0; border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light);">
                 <!-- 评论数 -->
-                <div class="post-meta comment-meta" data-url="https://qijiu3011.github.io/2026/03/16/3%E6%9C%8813%E6%97%A5%E5%A4%A9%E6%A2%AF%E8%B5%9B%E9%80%89%E6%8B%942%E8%A1%A5%E9%A2%98/">
+                <div class="post-meta comment-meta" data-url="https://qijiu3011.github.io/2026/04/02/%E4%BA%94%E5%AD%90%E6%A3%8B/">
                     <i class="iconfont icon-comment"></i>
                     <span class="comment-count" style="color: var(--blue-cloud); font-weight: 500;">0</span> 评论
                 </div>
                 
                 <!-- 点赞按钮（跟在阅读数后面） -->
-                <div class="post-meta like-meta" data-url="https://qijiu3011.github.io/2026/03/16/3%E6%9C%8813%E6%97%A5%E5%A4%A9%E6%A2%AF%E8%B5%9B%E9%80%89%E6%8B%942%E8%A1%A5%E9%A2%98/" style="cursor: pointer; display: inline-flex; align-items: center; gap: 0.3rem;">
+                <div class="post-meta like-meta" data-url="https://qijiu3011.github.io/2026/04/02/%E4%BA%94%E5%AD%90%E6%A3%8B/" style="cursor: pointer; display: inline-flex; align-items: center; gap: 0.3rem;">
                   <span style="color: var(--blue-cloud); font-size: 1rem;">❤️</span>
                   <span class="like-count" style="color: var(--blue-cloud); font-weight: 500;">0</span>点赞
                 </div>
@@ -428,9 +371,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2026/03/18/%E7%AC%AC%E4%B8%80%E5%A4%A9%EF%BC%9A%E9%93%BE%E8%A1%A8%E5%92%8C%E6%8E%92%E5%BA%8F/" title="第1天">
+                      <a href="/2026/04/04/%E9%A1%B9%E7%9B%AE2%20%E5%A4%8D%E7%8E%B0vector/" title="项目2 STL vector简易实现与解析">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">第1天</span>
+                        <span class="hidden-mobile">项目2 STL vector简易实现与解析</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -438,8 +381,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2026/03/14/3%E6%9C%886%E6%97%A5%E5%A4%A9%E6%A2%AF%E8%B5%9B%E9%80%89%E6%8B%941%E8%A1%A5%E9%A2%98/" title="3月6日天梯赛选拔1补题（牛客周赛94,97）">
-                        <span class="hidden-mobile">3月6日天梯赛选拔1补题（牛客周赛94,97）</span>
+                      <a href="/2026/03/18/%E7%AC%AC%E4%B8%80%E5%A4%A9%EF%BC%9A%E9%93%BE%E8%A1%A8%E5%92%8C%E6%8E%92%E5%BA%8F/" title="第1天">
+                        <span class="hidden-mobile">第1天</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
