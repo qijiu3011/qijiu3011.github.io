@@ -1384,7 +1384,7 @@ pre code {
   vertical-align: middle;
 }
 .links-of-author a::before {
-  background: #d4c67c;
+  background: #6c9095;
   display: inline-block;
   margin-right: 3px;
   transform: translateY(-2px);
@@ -2856,8 +2856,8 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-/* ===== 首页文章列表样式 ===== */
-.posts-expand .post-block {
+/* ===== 首页文章列表样式（限首页 .index） ===== */
+.index.posts-expand .post-block {
   margin: 0 !important;
   padding: 0 !important;
   background: transparent !important;
@@ -2865,8 +2865,7 @@ body {
   box-shadow: none !important;
   border-radius: 0 !important;
 }
-/* 每篇文章为一行：左右布局 */
-.posts-expand .post-header {
+.index.posts-expand .post-header {
   display: flex !important;
   align-items: baseline !important;
   justify-content: space-between !important;
@@ -2874,7 +2873,7 @@ body {
   border-bottom: 1px solid var(--border-light) !important;
   margin: 0 !important;
 }
-.posts-expand .post-title {
+.index.posts-expand .post-title {
   font-size: 0.95rem !important;
   font-weight: 500 !important;
   margin: 0 !important;
@@ -2886,79 +2885,61 @@ body {
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-.posts-expand .post-title-link {
+.index.posts-expand .post-title-link {
   color: var(--text-primary) !important;
   text-decoration: none !important;
 }
-.posts-expand .post-title-link:hover {
+.index.posts-expand .post-title-link:hover {
   color: var(--link-hover) !important;
 }
-/* 日期靠右 */
-.posts-expand .post-meta-container {
+.index.posts-expand .post-meta-container {
   order: 2;
   flex-shrink: 0;
   margin-left: 1rem !important;
   padding: 0 !important;
 }
-.posts-expand .post-meta {
+.index.posts-expand .post-meta {
   display: inline-flex !important;
   align-items: center !important;
   gap: 0.5rem !important;
 }
-.posts-expand .post-meta-item {
+.index.posts-expand .post-meta-item {
   font-size: 0.8rem !important;
   color: var(--text-light) !important;
 }
-/* 隐藏图标和标签文字，只保留日期文字 */
-.posts-expand .post-meta-item-icon,
-.posts-expand .post-meta-item-text {
+/* 首页隐藏图标和标签文字 */
+.index.posts-expand .post-meta-item-icon,
+.index.posts-expand .post-meta-item-text {
   display: none !important;
 }
-/* 隐藏分类、标签等非日期元数据 */
-.posts-expand .post-meta-item:not(:first-child) {
+/* 首页只保留第一个 meta 项（日期） */
+.index.posts-expand .post-meta-item:not(:first-child) {
   display: none !important;
 }
-/* 隐藏文章正文 */
-.posts-expand .post-body {
+/* 首页隐藏文章正文 */
+.index.posts-expand .post-body {
   display: none !important;
 }
-/* 隐藏阅读更多按钮 */
-.posts-expand .post-button {
+/* 首页隐藏阅读更多按钮 */
+.index.posts-expand .post-button {
   display: none !important;
 }
-/* 隐藏分隔线 */
-.posts-expand .post-eof {
+/* 首页隐藏分隔线 */
+.index.posts-expand .post-eof {
   display: none !important;
 }
-/* 隐藏底部元数据 */
-.posts-expand .post-footer {
+/* 首页隐藏底部元数据 */
+.index.posts-expand .post-footer {
   display: none !important;
-}
-/* ===== 文章页内样式 ===== */
-.post-block.page .post-header,
-.post-block.post .post-header {
-  display: block !important;
-  border-bottom: none !important;
-  padding: 0 !important;
-}
-.post-block.page .post-title,
-.post-block.post .post-title {
-  font-size: 1.6rem !important;
-  font-weight: 600 !important;
-  white-space: normal !important;
-}
-.post-block.page .post-body,
-.post-block.post .post-body {
-  display: block !important;
 }
 @media screen and (max-width: 768px) {
-  .posts-expand .post-header {
+  .index.posts-expand .post-header {
     padding: 0.5rem 0 !important;
   }
-  .posts-expand .post-title {
+  .index.posts-expand .post-title {
     font-size: 0.9rem !important;
   }
-  .posts-expand .post-meta-item {
+  .index.posts-expand .post-meta-item {
     font-size: 0.75rem !important;
   }
 }
