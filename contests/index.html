@@ -20,15 +20,15 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"qijiu3011.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.27.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12,"width":300},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js" defer></script>
 
-    <meta name="description" content="📅 未来14天比赛   加载中...       #contest-tracker {   font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, sans-serif;   max-width: 1200px;   margin: 0 auto;   padding: 20px; }  .contest-da">
+    <meta name="description" content="未来14天比赛   加载中...       #contest-tracker {   max-width: 800px;   margin: 0 auto;   padding: 0; }  .contest-page-title {   font-size: 1rem;   font-weight: 600;   color: var(--text-primary);   margin-">
 <meta property="og:type" content="website">
 <meta property="og:title" content="近期比赛">
 <meta property="og:url" content="https://qijiu3011.github.io/contests/index.html">
 <meta property="og:site_name" content="MianYy的博客">
-<meta property="og:description" content="📅 未来14天比赛   加载中...       #contest-tracker {   font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, sans-serif;   max-width: 1200px;   margin: 0 auto;   padding: 20px; }  .contest-da">
+<meta property="og:description" content="未来14天比赛   加载中...       #contest-tracker {   max-width: 800px;   margin: 0 auto;   padding: 0; }  .contest-page-title {   font-size: 1rem;   font-weight: 600;   color: var(--text-primary);   margin-">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-03-09T16:00:00.000Z">
-<meta property="article:modified_time" content="2026-05-06T12:43:46.532Z">
+<meta property="article:modified_time" content="2026-05-06T12:57:23.594Z">
 <meta property="article:author" content="qijiu3011">
 <meta property="article:tag" content="ACM,算法,编程">
 <meta name="twitter:card" content="summary">
@@ -109,7 +109,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-contests"><a href="/contests/" rel="section"><i class="fa fa-calendar fa-fw"></i>contests</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-other"><a href="/other/" rel="section"><i class="fa fa-ellipsis-h fa-fw"></i>other</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -147,7 +147,7 @@
   
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+    <div class="sidebar-inner sidebar-overview-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -160,7 +160,6 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#contest-tracker"><span class="nav-number">1.</span> <span class="nav-text">📅 未来14天比赛</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -222,120 +221,106 @@
       
       <div class="post-body">
           <div id="contest-tracker">
-  <h2>📅 未来14天比赛</h2>
-  <div id="loading">加载中...</div>
+  <div class="contest-page-title">未来14天比赛</div>
+  <div id="loading" style="color: var(--text-light); font-size: 0.9rem; padding: 10px 0;">加载中...</div>
   <div id="contest-list"></div>
 </div>
 
 <style>
 #contest-tracker {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  max-width: 1200px;
+  max-width: 800px;
   margin: 0 auto;
-  padding: 20px;
+  padding: 0;
+}
+
+.contest-page-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border-light);
 }
 
 .contest-day-group {
-  margin-bottom: 2rem;
+  margin-bottom: 1.8rem;
 }
 
 .day-title {
-  font-size: 1.3rem;
-  font-weight: 600;
-  color: var(--text-primary, #2c3e50);
-  margin-bottom: 1rem;
-  padding-bottom: 0.3rem;
-  border-bottom: 2px solid var(--blue-mist, #d4e9ff);
-}
-
-.contest-cards-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  justify-content: flex-start;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-soft);
+  margin-bottom: 0.5rem;
+  padding-left: 0;
 }
 
 .contest-item {
-  background: var(--bg-main, #fff);
-  border: 1px solid var(--blue-mist, #d4e9ff);
-  border-radius: 12px;
-  padding: 1rem;
-  box-shadow: 0 2px 8px rgba(66,153,225,0.08);
-  transition: all 0.2s;
-  width: 300px;
-  flex-shrink: 0;
-  box-sizing: border-box;
-}
-.contest-item:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(66,153,225,0.15);
-  border-color: var(--blue-cloud, #9ac0ff);
-}
-
-.contest-header {
   display: flex;
   align-items: center;
-  gap: 10px;
-  margin-bottom: 8px;
-  flex-wrap: wrap;
+  padding: 0.65rem 0;
+  border-bottom: 1px solid var(--border-light);
+  gap: 12px;
+}
+.contest-item:last-child {
+  border-bottom: none;
 }
 
 .contest-platform {
   display: inline-block;
-  padding: 2px 10px;
-  border-radius: 16px;
-  font-size: 0.8rem;
+  min-width: 72px;
+  padding: 2px 8px;
+  border-radius: 3px;
+  font-size: 0.78rem;
   font-weight: 500;
-  background: var(--blue-soft, #e6f3ff);
-  color: var(--text-secondary, #4a5568);
+  text-align: center;
+  background: var(--blue-soft);
+  color: var(--text-secondary);
+  flex-shrink: 0;
 }
 
 .contest-name {
-  font-size: 1rem;
-  font-weight: 600;
-  color: var(--text-primary, #2c3e50);
-  text-decoration: none;
   flex: 1;
+  font-size: 0.92rem;
+  color: var(--text-primary);
+  text-decoration: none;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .contest-name:hover {
-  color: var(--link-hover, #2c5282);
-}
-
-.rated-badge {
-  background: var(--blue-cloud, #9ac0ff);
-  color: white;
-  padding: 2px 8px;
-  border-radius: 12px;
-  font-size: 0.7rem;
-  font-weight: 500;
+  color: var(--link-hover);
 }
 
 .contest-time {
+  flex-shrink: 0;
   display: flex;
-  gap: 15px;
-  color: var(--text-light, #718096);
-  font-size: 0.85rem;
-  margin-top: 8px;
+  gap: 12px;
+  color: var(--text-light);
+  font-size: 0.82rem;
+  white-space: nowrap;
 }
 
 .no-contests {
   text-align: center;
-  color: #718096;
+  color: var(--text-light);
   padding: 40px;
-  font-size: 1.1rem;
+  font-size: 0.95rem;
 }
 
 .error-message {
   color: #e53e3e;
   padding: 20px;
   text-align: center;
-  border: 1px dashed #feb2b2;
-  border-radius: 8px;
+  font-size: 0.9rem;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 600px) {
   .contest-item {
-    width: 100%;
+    flex-wrap: wrap;
+    gap: 4px 12px;
+  }
+  .contest-time {
+    margin-left: 84px;
   }
 }
 </style>
@@ -345,17 +330,11 @@ function formatDate(isoString) {
   const date = new Date(isoString);
   const now = new Date();
   const diffDays = Math.floor((date - now) / (1000 * 60 * 60 * 24));
+  const hours = date.getHours().toString().padStart(2,'0');
+  const mins = date.getMinutes().toString().padStart(2,'0');
   if (diffDays < 0) return '已开始';
-  if (diffDays === 0) {
-    const hours = date.getHours().toString().padStart(2,'0');
-    const mins = date.getMinutes().toString().padStart(2,'0');
-    return `今天 ${hours}:${mins}`;
-  }
-  if (diffDays === 1) {
-    const hours = date.getHours().toString().padStart(2,'0');
-    const mins = date.getMinutes().toString().padStart(2,'0');
-    return `明天 ${hours}:${mins}`;
-  }
+  if (diffDays === 0) return `今天 ${hours}:${mins}`;
+  if (diffDays === 1) return `明天 ${hours}:${mins}`;
   if (diffDays < 7) return `${diffDays}天后`;
   const month = date.getMonth() + 1;
   const day = date.getDate();
@@ -401,29 +380,25 @@ async function loadContests() {
       const dayDisplay = getDayDisplay(dateKey);
       html += `<div class="contest-day-group">`;
       html += `<div class="day-title">${dayDisplay}</div>`;
-      html += `<div class="contest-cards-row">`;
 
       dayContests.forEach(c => {
         const startDate = formatDate(c.start);
         const durationHours = Math.floor(c.duration / 3600);
         const durationMinutes = Math.floor((c.duration % 3600) / 60);
+        const durationStr = `${durationHours}h${durationMinutes > 0 ? durationMinutes + 'm' : ''}`;
 
         html += `
           <div class="contest-item">
-            <div class="contest-header">
-              <span class="contest-platform">${c.platform}</span>
-              <a href="${c.url}" target="_blank" class="contest-name">${c.name}</a>
-              <span class="rated-badge">Rated</span>
-            </div>
-            <div class="contest-time">
-              <span>⏰ ${startDate}</span>
-              <span>⏱️ ${durationHours}h${durationMinutes > 0 ? durationMinutes + 'm' : ''}</span>
-            </div>
+            <span class="contest-platform">${c.platform}</span>
+            <a href="${c.url}" target="_blank" class="contest-name">${c.name}</a>
+            <span class="contest-time">
+              <span>${startDate}</span>
+              <span>${durationStr}</span>
+            </span>
           </div>
         `;
       });
 
-      html += `</div>`;
       html += `</div>`;
     });
 
@@ -482,6 +457,30 @@ document.addEventListener('DOMContentLoaded', loadContests);
 <noscript>
   <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
 </noscript>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // 找到"其他"菜单项，改为中文显示并添加下拉菜单
+  var otherItem = document.querySelector('.menu-item-other');
+  if (otherItem) {
+    var link = otherItem.querySelector('a');
+    if (link) {
+      var textNode = link.childNodes[link.childNodes.length - 1];
+      if (textNode) textNode.textContent = '其他';
+    }
+    var dropdown = document.createElement('div');
+    dropdown.className = 'dropdown-menu';
+    dropdown.innerHTML = '<a href="/contests/">比赛</a>';
+    otherItem.appendChild(dropdown);
+  }
+
+  // 移除菜单内的搜索项（右侧独立图标已存在）
+  var menu = document.querySelector('.main-menu');
+  var searchItem = document.querySelector('.menu-item-search');
+  if (menu && searchItem) {
+    searchItem.parentNode.removeChild(searchItem);
+  }
+});
+</script>
 
 </body>
 </html>
