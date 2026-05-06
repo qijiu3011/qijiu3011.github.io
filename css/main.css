@@ -1384,7 +1384,7 @@ pre code {
   vertical-align: middle;
 }
 .links-of-author a::before {
-  background: #6c9095;
+  background: #58c686;
   display: inline-block;
   margin-right: 3px;
   transform: translateY(-2px);
@@ -2981,4 +2981,27 @@ body {
 }
 .collection-link:hover {
   color: var(--link-hover);
+}
+/* ===== 导航栏底部黑色边框 ===== */
+.header-inner {
+  border-bottom: 1px solid #ddd !important;
+  padding-bottom: 0 !important;
+}
+.site-nav {
+  display: flex !important;
+  justify-content: center !important;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0 0.5rem !important;
+}
+.menu {
+  text-align: center !important;
+}
+.menu .menu-item {
+  margin: 0 0.3rem !important;
+}
+.menu .menu-item a {
+  font-size: 0.9rem !important;
+  padding: 0.3rem 0.5rem !important;
 }
