@@ -262,6 +262,8 @@
 <li>后台常驻线程轮询 Pending 记录，逐个调用评测函数，更新状态</li>
 <li>前端每秒轮询 &#x2F;result&#x2F;<id> 获取结果，直到终态</li>
 </ul>
+<p><img src="/%E6%8F%90%E4%BA%A4%E6%BC%94%E7%A4%BA1.png" alt="提交代码界面"><br><em>提交代码，选择题目和语言后提交。</em></p>
+<p><img src="/%E6%8F%90%E4%BA%A4%E6%BC%94%E7%A4%BA2.png" alt="评测结果界面"><br><em>评测完成后实时显示结果（AC&#x2F;WA&#x2F;TLE&#x2F;MLE等）。</em></p>
 <h3 id="2-安全沙箱"><a href="#2-安全沙箱" class="headerlink" title="2. 安全沙箱"></a>2. 安全沙箱</h3><ul>
 <li>优先使用 Docker：动态创建 gcc:latest &#x2F; python:3.10-slim 容器，限制内存 256MB、CPU 0.5 核</li>
 <li>无 Docker 时回退本地 psutil 进程树监控，2 秒超时、内存超限即杀灭进程组</li>
@@ -270,12 +272,14 @@
 <li>problems 表含 is_visible 字段，1 公开，0 仅比赛可见</li>
 <li>首页只显示公开题目，管理员可上传 ZIP 生成临时题目（is_visible&#x3D;0），赛后一键发布</li>
 </ul>
+<p><img src="/%E9%A2%98%E7%9B%AE%E6%BC%94%E7%A4%BA.png" alt="题目列表界面"><br><em>题目列表，公开题目对所有人可见，比赛题目仅比赛期间可见。</em></p>
 <h3 id="4-ACM-比赛系统"><a href="#4-ACM-比赛系统" class="headerlink" title="4. ACM 比赛系统"></a>4. ACM 比赛系统</h3><ul>
 <li>表结构：contests（比赛信息）、contest_problems（多对多关联 + 显示顺序）</li>
 <li>提交记录增加 contest_id 字段，仅在比赛期间计入排名</li>
 <li>排名规则：AC 数量降序 → 总罚时升序</li>
 <li>罚时计算：(AC时间 - 比赛开始时间) &#x2F; 60 + (AC前错误提交次数 × 20)</li>
 </ul>
+<p><img src="/%E6%AF%94%E8%B5%9B%E5%8F%8A%E5%AE%9E%E6%97%B6%E6%8E%92%E8%A1%8C.png" alt="比赛实时排行"><br><em>比赛进行中的实时排行榜，按 AC 题数和罚时排序。</em></p>
 <h3 id="5-管理员功能"><a href="#5-管理员功能" class="headerlink" title="5. 管理员功能"></a>5. 管理员功能</h3><ul>
 <li>创建比赛：填写起止时间、从现有题库勾选题目、上传临时题目 ZIP（自动解析 desc.txt 和 input*.txt&#x2F;output*.txt）</li>
 <li>赛后发布临时题目：自动迁移至 problems&#x2F; 并设为公开</li>
