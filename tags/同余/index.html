@@ -170,7 +170,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">10</span>
+          <span class="site-state-item-count">11</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -180,7 +180,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-count">16</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -338,11 +338,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // 为所有代码块添加复制按钮（等 NexT 处理完后执行）
   setTimeout(function() {
-    // 启用 NexT 的复制按钮功能
-    if (typeof CONFIG !== 'undefined' && CONFIG.codeblock) {
-      CONFIG.codeblock.copy_button = { enable: true, style: 'flat' };
-    }
-    // 手动为已有代码块注册复制按钮
     var figures = document.querySelectorAll('figure.highlight');
     figures.forEach(function(fig) {
       // 跳过已添加按钮的

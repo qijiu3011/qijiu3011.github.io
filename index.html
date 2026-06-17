@@ -170,7 +170,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">10</span>
+          <span class="site-state-item-count">11</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -180,7 +180,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-count">16</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -197,6 +197,108 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://qijiu3011.github.io/2026/06/17/%E8%87%AA%E5%BB%BA%E7%AE%80%E6%98%93acm%E8%B5%9B%E5%88%B6oj%E7%B3%BB%E7%BB%9F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="qijiu3011">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MianYy的博客">
+      <meta itemprop="description" content="记录我的算法竞赛学习之路">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | MianYy的博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2026/06/17/%E8%87%AA%E5%BB%BA%E7%AE%80%E6%98%93acm%E8%B5%9B%E5%88%B6oj%E7%B3%BB%E7%BB%9F/" class="post-title-link" itemprop="url">自建 ACM 赛制 OJ 系统（Flask + Docker）</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2026-06-17 00:00:00" itemprop="dateCreated datePublished" datetime="2026-06-17T00:00:00+08:00">2026-06-17</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>基于 Flask 和 Docker 实现的轻量级ACM赛制在线评测系统，支持异步评测、多语言、可进行比赛与实时排行。</p>
+<hr>
+<h2 id="技术栈"><a href="#技术栈" class="headerlink" title="技术栈"></a>技术栈</h2><ul>
+<li>后端：Flask + Waitress（生产服务器）</li>
+<li>数据库：SQLite</li>
+<li>安全隔离：Docker（优先）+ psutil（本地回退）</li>
+<li>前端：原生 HTML + Ajax 轮询</li>
+</ul>
+<hr>
+<h2 id="核心实现"><a href="#核心实现" class="headerlink" title="核心实现"></a>核心实现</h2><h3 id="1-异步评测队列"><a href="#1-异步评测队列" class="headerlink" title="1. 异步评测队列"></a>1. 异步评测队列</h3><ul>
+<li>提交接口只写入 submissions 表，状态 Pending，立即返回 submission_id</li>
+<li>后台常驻线程轮询 Pending 记录，逐个调用评测函数，更新状态</li>
+<li>前端每秒轮询 &#x2F;result&#x2F;<id> 获取结果，直到终态</li>
+</ul>
+<h3 id="2-安全沙箱"><a href="#2-安全沙箱" class="headerlink" title="2. 安全沙箱"></a>2. 安全沙箱</h3><ul>
+<li>优先使用 Docker：动态创建 gcc:latest &#x2F; python:3.10-slim 容器，限制内存 256MB、CPU 0.5 核</li>
+<li>无 Docker 时回退本地 psutil 进程树监控，2 秒超时、内存超限即杀灭进程组</li>
+</ul>
+<h3 id="3-多题目与可见性"><a href="#3-多题目与可见性" class="headerlink" title="3. 多题目与可见性"></a>3. 多题目与可见性</h3><ul>
+<li>problems 表含 is_visible 字段，1 公开，0 仅比赛可见</li>
+<li>首页只显示公开题目，管理员可上传 ZIP 生成临时题目（is_visible&#x3D;0），赛后一键发布</li>
+</ul>
+<h3 id="4-ACM-比赛系统"><a href="#4-ACM-比赛系统" class="headerlink" title="4. ACM 比赛系统"></a>4. ACM 比赛系统</h3><ul>
+<li>表结构：contests（比赛信息）、contest_problems（多对多关联 + 显示顺序）</li>
+<li>提交记录增加 contest_id 字段，仅在比赛期间计入排名</li>
+<li>排名规则：AC 数量降序 → 总罚时升序</li>
+<li>罚时计算：(AC时间 - 比赛开始时间) &#x2F; 60 + (AC前错误提交次数 × 20)</li>
+</ul>
+<h3 id="5-管理员功能"><a href="#5-管理员功能" class="headerlink" title="5. 管理员功能"></a>5. 管理员功能</h3><ul>
+<li>创建比赛：填写起止时间、从现有题库勾选题目、上传临时题目 ZIP（自动解析 desc.txt 和 input*.txt&#x2F;output*.txt）</li>
+<li>赛后发布临时题目：自动迁移至 problems&#x2F; 并设为公开</li>
+</ul>
+<hr>
+<h2 id="项目地址"><a href="#项目地址" class="headerlink" title="项目地址"></a>项目地址</h2><p><a target="_blank" rel="noopener" href="https://github.com/qijiu3011/oj">https://github.com/qijiu3011/oj</a></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -915,162 +1017,9 @@ int main()
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://qijiu3011.github.io/2025/11/16/%E9%A2%98%E8%A7%A3%E4%B8%8A%E4%BC%A0%E6%B5%8B%E8%AF%95/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="qijiu3011">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="MianYy的博客">
-      <meta itemprop="description" content="记录我的算法竞赛学习之路">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content=" | MianYy的博客">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2025/11/16/%E9%A2%98%E8%A7%A3%E4%B8%8A%E4%BC%A0%E6%B5%8B%E8%AF%95/" class="post-title-link" itemprop="url">题解上传测试</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2025-11-16 00:00:00" itemprop="dateCreated datePublished" datetime="2025-11-16T00:00:00+08:00">2025-11-16</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h2><p><a target="_blank" rel="noopener" href="https://atcoder.jp/contests/abc432/tasks/abc432_c">ABC 432 C - Candy Tribulation</a></p>
-<h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>对 n 个孩子分发大糖果和小糖果：</p>
-<ul>
-<li>小糖果 x 克</li>
-<li>大糖果 y 克</li>
-</ul>
-<p>对于 a[i]，代表第 i 个孩子需要分配的糖果个数。要求所有孩子分配到的糖果总重相等。</p>
-<h2 id="错因分析"><a href="#错因分析" class="headerlink" title="错因分析"></a>错因分析</h2><p>公式推出来了，但是不会写检查总重相等那部分的代码。不过这 C 题怎么比之前的难这么多。。。</p>
-<h2 id="考察知识点"><a href="#考察知识点" class="headerlink" title="考察知识点"></a>考察知识点</h2><p>数论（同余定理）</p>
-<h2 id="题解思路"><a href="#题解思路" class="headerlink" title="题解思路"></a>题解思路</h2><p>设每个孩子最终得到的总重量为 w，则：</p>
-<p>$$<br>w &#x3D; x \cdot a[i] + k[i] \cdot (y - x)<br>$$</p>
-<p>其中 k[i] 是给第 i 个孩子的大糖果数量（相对于全部分小糖果的增量）。</p>
-<h3 id="1-确定-w-的范围"><a href="#1-确定-w-的范围" class="headerlink" title="1. 确定 w 的范围"></a>1. 确定 w 的范围</h3><ul>
-<li><p><strong>最小值</strong>：所有孩子都尽可能用小糖果时，取最大值：<br>$$<br>w_{\min} &#x3D; \max_{i} (x \cdot a[i])<br>$$</p>
-</li>
-<li><p><strong>最大值</strong>：所有孩子都尽可能用大糖果时，取最小值：<br>$$<br>w_{\max} &#x3D; \min_{i} (y \cdot a[i])<br>$$</p>
-</li>
-</ul>
-<p>如果 $w_{\min} &gt; w_{\max}$，则无解，输出 -1。</p>
-<h3 id="2-同余条件"><a href="#2-同余条件" class="headerlink" title="2. 同余条件"></a>2. 同余条件</h3><p>由 $w &#x3D; x \cdot a[i] + k[i] \cdot (y - x)$ 可得：</p>
-<p>$$<br>x \cdot a[i] \equiv w \pmod{(y-x)}<br>$$</p>
-<p>因此，所有 $x \cdot a[i]$ 对 $(y-x)$ 取模必须相等，否则无解。</p>
-<h3 id="3-计算总糖果数"><a href="#3-计算总糖果数" class="headerlink" title="3. 计算总糖果数"></a>3. 计算总糖果数</h3><p>取 $w &#x3D; w_{\max}$（或任意可行值），则：</p>
-<p>$$<br>k[i] &#x3D; \frac{w - x \cdot a[i]}{y - x}<br>$$</p>
-<p>总糖果数（即大糖果的总增加量）为：</p>
-<p>$$<br>\sum_{i&#x3D;1}^{n} k[i]<br>$$</p>
-<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><pre><code class="cpp">#include&lt;bits/stdc++.h&gt;
-using namespace std;
-using ll = long long;
-const ll N = 2e5+10;
-
-int main()
-&#123;
-    ios::sync_with_stdio(false);
-    cin.tie(0);
-    
-    ll n, x, y;
-    cin &gt;&gt; n &gt;&gt; x &gt;&gt; y;
-    ll a[n];
-    for(ll i = 0; i &lt; n; i++) cin &gt;&gt; a[i];
-    
-    // 最小值：取 x*a[i] 的最大值
-    ll minsum = -1;
-    for(ll i = 0; i &lt; n; i++) 
-        minsum = max(minsum, x * a[i]);
-    
-    // 最大值：取 y*a[i] 的最小值
-    ll maxsum = 1e18;
-    for(ll i = 0; i &lt; n; i++) 
-        maxsum = min(maxsum, y * a[i]);
-    
-    if(minsum &gt; maxsum)
-    &#123;
-        cout &lt;&lt; -1;
-        return 0;
-    &#125;
-    
-    // 检查同余条件：所有 x*a[i] % (y-x) 必须相等
-    ll ys = (x * a[0]) % (y - x);
-    if(ys &lt; 0) ys += (y - x);
-    for(ll i = 1; i &lt; n; i++) 
-    &#123;
-        ll aidys = (x * a[i]) % (y - x);
-        if(aidys &lt; 0) aidys += (y - x);
-        if(aidys != ys)
-        &#123;
-            cout &lt;&lt; -1;
-            return 0;
-        &#125;
-    &#125;
-    
-    // 计算总糖果数
-    ll sum = 0;
-    for(ll i = 0; i &lt; n; i++)
-    &#123;
-        if((maxsum - x * a[i]) % (y - x) != 0)
-        &#123;
-            cout &lt;&lt; -1;
-            return 0;
-        &#125;
-        ll temp = (maxsum - x * a[i]) / (y - x);
-        sum += temp;
-    &#125;
-    
-    cout &lt;&lt; sum;
-    return 0;
-&#125;
-</code></pre>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+  </nav>
 
 </div>
   </main>
@@ -1169,11 +1118,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // 为所有代码块添加复制按钮（等 NexT 处理完后执行）
   setTimeout(function() {
-    // 启用 NexT 的复制按钮功能
-    if (typeof CONFIG !== 'undefined' && CONFIG.codeblock) {
-      CONFIG.codeblock.copy_button = { enable: true, style: 'flat' };
-    }
-    // 手动为已有代码块注册复制按钮
     var figures = document.querySelectorAll('figure.highlight');
     figures.forEach(function(fig) {
       // 跳过已添加按钮的
