@@ -330,12 +330,18 @@ document.addEventListener('DOMContentLoaded', function() {
   var menu = document.querySelector('.main-menu');
   if (!menu) return;
 
-  // ===== 1. 彻底删除两个搜索按钮 =====
-  var searchItem = document.querySelector('.menu-item-search');
-  if (searchItem) searchItem.parentNode.removeChild(searchItem);
-
+  // ===== 1. 删除右上角搜索图标 =====
   var siteNavRight = document.querySelector('.site-nav-right');
   if (siteNavRight) siteNavRight.parentNode.removeChild(siteNavRight);
+
+  // ===== 2. 搜索菜单项改文字，移到"关于"后面 =====
+  var searchItem = document.querySelector('.menu-item-search');
+  if (searchItem) {
+    var link = searchItem.querySelector('a');
+    if (link) link.innerHTML = '<i class="fa fa-search fa-fw"></i>搜索';
+    // 先移除，后面再插到合适位置
+    searchItem.parentNode.removeChild(searchItem);
+  }
 
   // ===== 2. "其他"改为中文 + 移到末尾 =====
   var otherItem = document.querySelector('.menu-item-other');
@@ -365,6 +371,13 @@ document.addEventListener('DOMContentLoaded', function() {
     menu.insertBefore(toggleLi, otherItem);
   } else {
     menu.appendChild(toggleLi);
+  }
+
+  // ===== 4. 把搜索插在"夜间"前面（即"关于"后面） =====
+  if (searchItem && toggleLi) {
+    menu.insertBefore(searchItem, toggleLi);
+  } else if (searchItem) {
+    menu.appendChild(searchItem);
   }
 
   document.getElementById('themeToggleBtn').addEventListener('click', function(e) {

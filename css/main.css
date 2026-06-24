@@ -1221,7 +1221,7 @@ pre code {
   vertical-align: middle;
 }
 .links-of-author a::before {
-  background: #4bacff;
+  background: #267aff;
   display: inline-block;
   margin-right: 3px;
   transform: translateY(-2px);
@@ -2645,6 +2645,10 @@ body {
 /* 隐藏右上角搜索图标的区域 */
 .site-nav-right {
   display: none !important;
+}
+/* 菜单搜索项在桌面端显示 */
+.main-menu .menu-item-search {
+  display: inline-block !important;
 }
 /* 站点标题区间距调整 */
 .site-brand-container {
