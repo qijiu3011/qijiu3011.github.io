@@ -1221,7 +1221,7 @@ pre code {
   vertical-align: middle;
 }
 .links-of-author a::before {
-  background: #18ffa3;
+  background: #11ff6f;
   display: inline-block;
   margin-right: 3px;
   transform: translateY(-2px);
@@ -2642,7 +2642,15 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-/* ===== 顶部标题栏 —— 去掉深色背景框 ===== */
+/* 隐藏右上角搜索图标的区域（已移到菜单中） */
+.site-nav-right {
+  display: none !important;
+}
+/* 菜单搜索项在桌面端也显示 */
+.main-menu .menu-item-search {
+  display: inline-block !important;
+}
+/* 站点标题区间距调整 */
 .site-brand-container {
   background: transparent !important;
   padding: 1rem 0 0.5rem 0 !important;
@@ -2698,21 +2706,23 @@ body {
   margin: 0 !important;
 }
 .menu .menu-item a {
-  font-size: 0.9rem !important;
-  padding: 0.4rem 0.75rem !important;
+  font-size: 0.8rem !important;
+  padding: 0.5rem 0.9rem !important;
   color: var(--text-secondary) !important;
-  border-radius: 4px !important;
+  border-radius: 6px !important;
   transition: all 0.2s ease !important;
   display: inline-flex !important;
+  flex-direction: column !important;
   align-items: center !important;
-  gap: 0.3rem !important;
+  gap: 0.15rem !important;
+  line-height: 1.2 !important;
 }
 .menu .menu-item a:hover {
   color: var(--accent-blue) !important;
   background: var(--blue-soft) !important;
 }
 .menu .menu-item a i {
-  font-size: 0.85rem !important;
+  font-size: 1.1rem !important;
 }
 /* 搜索按钮 */
 .menu .menu-item-search a {
@@ -2976,28 +2986,31 @@ html[data-theme="dark"] .copy-btn {
   transform: translateX(-50%);
   background: var(--bg-main);
   border: 1px solid var(--border-light);
-  border-radius: 4px;
+  border-radius: 8px;
   min-width: 100px;
   z-index: 1000;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-  padding: 4px 0;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  padding: 6px 0;
   white-space: nowrap;
 }
 .menu-item-other:hover .dropdown-menu {
   display: block;
 }
 .menu-item-other .dropdown-menu a {
-  display: block !important;
-  padding: 6px 16px !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.4rem !important;
+  padding: 8px 20px !important;
   font-size: 0.85rem !important;
   color: var(--text-primary) !important;
   text-decoration: none !important;
+  transition: background 0.15s !important;
 }
 .menu-item-other .dropdown-menu a:hover {
   background: var(--blue-soft) !important;
   color: var(--link-hover) !important;
 }
-/* 移动端下拉菜单（菜单本身是垂直的） */
+/* 移动端下拉菜单 */
 @media screen and (max-width: 768px) {
   .menu-item-other {
     position: relative !important;
@@ -3010,11 +3023,7 @@ html[data-theme="dark"] .copy-btn {
     padding-left: 1rem;
     background: transparent;
   }
-  .menu-item-other:hover .dropdown-menu {
-    display: block;
-  }
   .menu-item-other .dropdown-menu a {
-    font-size: 0.85rem !important;
-    padding: 4px 12px !important;
+    padding: 6px 12px !important;
   }
 }

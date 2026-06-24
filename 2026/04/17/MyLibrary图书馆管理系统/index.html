@@ -358,44 +358,31 @@
 </noscript>
 <script>
 (function() {
-  // 暗色模式切换（在 DOM 解析阶段立即执行）
+  // 暗色模式（在 DOM 解析阶段立即执行）
   var saved = localStorage.getItem('theme');
   var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
   var isDark = saved !== null ? saved === 'dark' : prefersDark;
-
   if (isDark) {
     document.documentElement.setAttribute('data-theme', 'dark');
   }
-
-  function injectThemeToggle() {
-    var container = document.querySelector('.site-nav-right');
-    if (!container) return;
-    var btn = document.createElement('div');
-    btn.className = 'theme-toggle';
-    btn.setAttribute('role', 'button');
-    btn.setAttribute('aria-label', 'Toggle dark mode');
-    btn.innerHTML = '<i class="fa fa-' + (isDark ? 'sun' : 'moon') + '"></i>';
-    btn.addEventListener('click', function() {
-      var html = document.documentElement;
-      var currentlyDark = html.getAttribute('data-theme') === 'dark';
-      if (currentlyDark) {
-        html.removeAttribute('data-theme');
-        localStorage.setItem('theme', 'light');
-        btn.innerHTML = '<i class="fa fa-moon"></i>';
-      } else {
-        html.setAttribute('data-theme', 'dark');
-        localStorage.setItem('theme', 'dark');
-        btn.innerHTML = '<i class="fa fa-sun"></i>';
-      }
-    });
-    container.insertBefore(btn, container.firstChild);
-  }
-
-  injectThemeToggle();
 })();
 
 document.addEventListener('DOMContentLoaded', function() {
-  // 找到"其他"菜单项，改为中文显示并添加下拉菜单
+  var menu = document.querySelector('.main-menu');
+  if (!menu) return;
+
+  // ===== 1. 保留搜索菜单项，隐藏右上角搜索图标 =====
+  var searchItem = document.querySelector('.menu-item-search');
+  if (searchItem) {
+    searchItem.style.display = '';
+    var link = searchItem.querySelector('a');
+    if (link) link.innerHTML = '<i class="fa fa-search fa-fw"></i>搜索';
+  }
+
+  var siteNavRight = document.querySelector('.site-nav-right');
+  if (siteNavRight) siteNavRight.style.display = 'none';
+
+  // ===== 2. "其他"改为中文 + 移到末尾 =====
   var otherItem = document.querySelector('.menu-item-other');
   if (otherItem) {
     var link = otherItem.querySelector('a');
@@ -409,22 +396,43 @@ document.addEventListener('DOMContentLoaded', function() {
     otherItem.appendChild(dropdown);
   }
 
-  // 移除菜单内的搜索项（右侧独立图标已存在）
-  var menu = document.querySelector('.main-menu');
-  var searchItem = document.querySelector('.menu-item-search');
-  if (menu && searchItem) {
-    searchItem.parentNode.removeChild(searchItem);
+  // ===== 3. 夜间切换（加在"其他"前面） =====
+  var saved = localStorage.getItem('theme');
+  var isDark = saved !== null ? saved === 'dark'
+    : window.matchMedia('(prefers-color-scheme: dark)').matches;
+  var toggleLi = document.createElement('li');
+  toggleLi.className = 'menu-item menu-item-theme-toggle';
+  toggleLi.innerHTML = '<a href="javascript:;" id="themeToggleBtn">'
+    + '<i class="fa fa-' + (isDark ? 'sun' : 'moon') + ' fa-fw"></i>'
+    + (isDark ? '白天' : '夜间') + '</a>';
+  // 插在"其他"前面
+  if (otherItem) {
+    menu.insertBefore(toggleLi, otherItem);
+  } else {
+    menu.appendChild(toggleLi);
   }
 
-  // 为所有代码块添加复制按钮（等 NexT 处理完后执行）
+  document.getElementById('themeToggleBtn').addEventListener('click', function(e) {
+    e.preventDefault();
+    var html = document.documentElement;
+    var currentlyDark = html.getAttribute('data-theme') === 'dark';
+    if (currentlyDark) {
+      html.removeAttribute('data-theme');
+      localStorage.setItem('theme', 'light');
+      this.innerHTML = '<i class="fa fa-moon fa-fw"></i>夜间';
+    } else {
+      html.setAttribute('data-theme', 'dark');
+      localStorage.setItem('theme', 'dark');
+      this.innerHTML = '<i class="fa fa-sun fa-fw"></i>白天';
+    }
+  });
+
+  // ===== 4. 代码块复制按钮 =====
   setTimeout(function() {
     var figures = document.querySelectorAll('figure.highlight');
     figures.forEach(function(fig) {
-      // 跳过已添加按钮的
       if (fig.querySelector('.copy-btn')) return;
-      // 跳过 mermaid
       if (fig.querySelector('.mermaid')) return;
-      // 获取代码容器（NexT 已创建）
       var target = fig.querySelector('.code-container') || fig;
       if (!target.classList.contains('code-container')) {
         var box = fig.querySelector('.table-container') || fig;
@@ -433,12 +441,10 @@ document.addEventListener('DOMContentLoaded', function() {
         box.wrap(container);
         target = container;
       }
-      // 创建复制按钮
       var btn = document.createElement('div');
       btn.className = 'copy-btn';
       btn.innerHTML = '<i class="fa fa-copy fa-fw"></i>';
       target.appendChild(btn);
-      // 绑定复制事件
       btn.addEventListener('click', function() {
         var code = fig.querySelector('.code') || fig.querySelector('code');
         var text = code ? code.innerText : '';
@@ -453,7 +459,6 @@ document.addEventListener('DOMContentLoaded', function() {
           btn.innerHTML = '<i class="fa fa-times-circle fa-fw"></i>';
         }
       });
-      // 鼠标离开重置图标
       fig.addEventListener('mouseleave', function() {
         setTimeout(function() {
           var i = btn.querySelector('i');
