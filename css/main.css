@@ -1221,7 +1221,7 @@ pre code {
   vertical-align: middle;
 }
 .links-of-author a::before {
-  background: #6c2405;
+  background: #18ffa3;
   display: inline-block;
   margin-right: 3px;
   transform: translateY(-2px);
@@ -2641,6 +2641,82 @@ body {
   background: linear-gradient(135deg, var(--bg-main) 0%, var(--bg-blue-soft) 100%);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+/* ===== 顶部标题栏 —— 去掉深色背景框 ===== */
+.site-brand-container {
+  background: transparent !important;
+  padding: 1rem 0 0.5rem 0 !important;
+}
+.site-meta {
+  background: transparent !important;
+}
+.brand {
+  background: transparent !important;
+  padding: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 0.5rem !important;
+}
+.brand .logo-line {
+  display: none !important;
+}
+.site-title {
+  color: var(--text-primary) !important;
+  font-size: 1.3rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.05em !important;
+}
+/* 隐藏侧栏头像区域的标题重复 */
+.site-meta .site-subtitle {
+  display: none !important;
+}
+/* ===== 导航菜单 ===== */
+.header-inner {
+  border-bottom: 1px solid var(--border-light) !important;
+  padding-bottom: 0 !important;
+}
+.site-nav {
+  display: flex !important;
+  justify-content: center !important;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0 !important;
+}
+.menu {
+  text-align: center !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  justify-content: center !important;
+  gap: 0 !important;
+}
+.menu .menu-item {
+  margin: 0 !important;
+}
+.menu .menu-item a {
+  font-size: 0.9rem !important;
+  padding: 0.4rem 0.75rem !important;
+  color: var(--text-secondary) !important;
+  border-radius: 4px !important;
+  transition: all 0.2s ease !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.3rem !important;
+}
+.menu .menu-item a:hover {
+  color: var(--accent-blue) !important;
+  background: var(--blue-soft) !important;
+}
+.menu .menu-item a i {
+  font-size: 0.85rem !important;
+}
+/* 搜索按钮 */
+.menu .menu-item-search a {
+  color: var(--text-light) !important;
 }
 /* ===== 首页文章列表样式（限首页 .index） ===== */
 .index.posts-expand .post-block {
