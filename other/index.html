@@ -292,13 +292,9 @@ document.addEventListener('DOMContentLoaded', function() {
   var menu = document.querySelector('.main-menu');
   if (!menu) return;
 
-  // ===== 1. 保留搜索菜单项，隐藏右上角搜索图标 =====
+  // ===== 1. 移除菜单里的搜索项，隐藏右上角搜索图标 =====
   var searchItem = document.querySelector('.menu-item-search');
-  if (searchItem) {
-    searchItem.style.display = '';
-    var link = searchItem.querySelector('a');
-    if (link) link.innerHTML = '<i class="fa fa-search fa-fw"></i>搜索';
-  }
+  if (searchItem) searchItem.style.display = 'none';
 
   var siteNavRight = document.querySelector('.site-nav-right');
   if (siteNavRight) siteNavRight.style.display = 'none';
