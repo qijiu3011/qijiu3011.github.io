@@ -394,12 +394,12 @@ document.addEventListener('DOMContentLoaded', function() {
   var menu = document.querySelector('.main-menu');
   if (!menu) return;
 
-  // ===== 1. 移除菜单里的搜索项，隐藏右上角搜索图标 =====
+  // ===== 1. 彻底删除两个搜索按钮 =====
   var searchItem = document.querySelector('.menu-item-search');
-  if (searchItem) searchItem.style.display = 'none';
+  if (searchItem) searchItem.parentNode.removeChild(searchItem);
 
   var siteNavRight = document.querySelector('.site-nav-right');
-  if (siteNavRight) siteNavRight.style.display = 'none';
+  if (siteNavRight) siteNavRight.parentNode.removeChild(siteNavRight);
 
   // ===== 2. "其他"改为中文 + 移到末尾 =====
   var otherItem = document.querySelector('.menu-item-other');
